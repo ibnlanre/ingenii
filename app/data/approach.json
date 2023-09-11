@@ -1,0 +1,27 @@
+[
+  {
+    "name": "chat-smile",
+    "character": "Empathic engagement",
+    "description": "Actively listening and fostering deep connections with clients to understand their unique needs, challenges, and aspirations."
+  },
+  {
+    "name": "line-chart",
+    "character": "Fact-based analysis",
+    "description": "Using rigorous data analysis and research to identify patterns, trends, and potential opportunities or risks."
+  },
+  {
+    "name": "collage",
+    "character": "Problem-solving frameworks",
+    "description": "Applying structured problem-solving frameworks to break down complex issues into manageable components and develop effective solutions"
+  },
+  {
+    "name": "team",
+    "character": "Collaborative approach",
+    "description": "Working closely with clients to understand their unique needs, engage stakeholders, and build consensus for implementation."
+  },
+  {
+    "name": "briefcase",
+    "character": "Long-term partnership",
+    "description": "Building enduring relationships with clients, providing ongoing support, and adapting strategies to changing market dynamics."
+  }
+]

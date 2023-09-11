@@ -1,0 +1,62 @@
+[
+  {
+    "name": "suitcase",
+    "service": "Business Consulting",
+    "description": "Offering expert guidance and advice on various aspects of business development, including market research, competitive analysis, and growth strategies."
+  },
+  {
+    "name": "device",
+    "service": "Custom Software Development",
+    "description": "Designing and building tailored software solutions to meet specific business needs, including web applications, mobile apps, enterprise software, and other software products."
+  },
+  {
+    "name": "bar-chart",
+    "service": "Growth Hacking",
+    "description": "Assisting businesses to achieve sustainable growth by identifying new opportunities, expanding into new markets, and maximizing revenue potential."
+  },
+  {
+    "name": "tools",
+    "service": "Technology Integration",
+    "description": "Helping businesses effectively integrate and leverage technology solutions to optimize their operations, improve efficiency, enhance communication and collaboration, and gain a competitive advantage."
+  },
+  {
+    "name": "macbook",
+    "service": "Digital Transformation",
+    "description": "Guiding businesses through the process of embracing digital technologies, transitioning to a digital-first approach, including implementing digital marketing, e-commerce solutions, and data analytics."
+  },
+  {
+    "name": "robot",
+    "service": "Innovation and Transformation",
+    "description": "Driving innovation within your organization by fostering a culture of creativity, exploring emerging technologies, and implementing transformative strategies."
+  },
+  {
+    "name": "store",
+    "service": "Market Expansion and Entry",
+    "description": "Supporting businesses in expanding their market reach, both domestically and internationally, through market research, market entry strategies, and partnership development."
+  },
+  {
+    "name": "calendar",
+    "service": "Strategic Planning",
+    "description": "Assisting clients in developing comprehensive strategies and roadmaps to align their business goals with technological advancements and market dynamics."
+  },
+  {
+    "name": "send",
+    "service": "Business Process Optimization",
+    "description": "Analyzing existing business processes, identifying bottlenecks, and implementing improvements to enhance productivity, reduce costs, and streamline operations"
+  },
+  {
+    "name": "government",
+    "service": "Project Management",
+    "description": "Providing project management expertise to ensure smooth execution and successful delivery of business and technology initiatives, including managing timelines, budgets, and resources."
+  },
+  {
+    "name": "shake-hands",
+    "service": "Partnership and Collaboration",
+    "description": "Facilitating strategic partnerships and collaborations with other companies, startups, or industry experts to drive innovation and create synergies."
+  },
+  {
+    "name": "restart",
+    "service": "Change Management",
+    "description": "Helping organizations navigate and manage the changes associated with implementing new technologies, processes, or business models."
+  }
+]
