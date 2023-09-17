@@ -18,22 +18,22 @@ export function OurApproach() {
   }, []);
 
   return (
-    <section className="flex flex-col gap-20 pb-20">
+    <section className="flex flex-col gap-20 pt-16 pb-20 bg-lotion">
       <div className="flex flex-col max-w-screen-xl gap-7 px-2 mx-auto clump:px-[clamp(8px,5vw,5rem)]">
-        <h3 className="text-5xl font-bold">Our approach</h3>
+        <h2 className="text-5xl font-bold">Our approach</h2>
         <p className="text-2xl">
           We focus on delivering strategic insights and data-driven solutions to
           help clients tackle complex challenges.
         </p>
       </div>
-      <m.div
+      <m.ul
         ref={scope}
-        className="grid auto-cols-[405px_auto] grid-flow-col overflow-hidden py-8"
+        className="grid auto-cols-[405px_auto] grid-flow-col overflow-hidden py-8 gap-3"
       >
         {APPROACH.map((approach) => {
           return (
             <Fragment key={approach.name}>
-              <article className="relative flex flex-col flex-1 gap-3 p-6 w-[405px] max-w-full shadow-card">
+              <li className="relative flex flex-col flex-1 gap-3 p-6 w-[405px] max-w-full shadow-card">
                 <figure className="p-2 rounded-full bg-pale-lavender w-fit">
                   <Image
                     src={`./sprites/${approach.name}.svg`}
@@ -42,11 +42,11 @@ export function OurApproach() {
                     width={24}
                   />
                 </figure>
-                <h3 className="text-xl font-bold">{approach.character}</h3>
+                <h4 className="text-xl font-bold">{approach.character}</h4>
                 <p className="text-lg text-philippine-gray">
                   {approach.description}
                 </p>
-              </article>
+              </li>
               <svg
                 width="51"
                 height="25"
@@ -58,7 +58,7 @@ export function OurApproach() {
             </Fragment>
           );
         })}
-      </m.div>
+      </m.ul>
     </section>
   );
 }

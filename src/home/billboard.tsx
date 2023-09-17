@@ -2,12 +2,12 @@ export function Billboard() {
   return (
     <section className="flex relative gap-6 px-2 clump:px-[clamp(8px,5vw,5rem)] max-w-screen-xl mx-auto">
       <article className="flex flex-col basis-7/12 gap-6 self-center py-[clamp(1rem,8vw,7.5rem)]">
-        <h2 className="text-6xl font-bold">
+        <h3 className="text-6xl font-bold">
           <span className="">Enabling Business Success in a</span>{" "}
           <span className="text-violet mix-blend-difference">
             Dynamic Landscape
           </span>
-        </h2>
+        </h3>
         <p className="text-lg lighten">
           We empower businesses to conquer the ever-changing business and
           technology landscape, achieve their goals, and thrive in fiercely

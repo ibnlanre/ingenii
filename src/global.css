@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  :root {
+    *:focus-visible {
+      outline-color: #8300eb;
+    }
+  }
+  .lighten {
+    text-shadow: 1ch 0 1cm white, 0 1ch 1cm white, -1ch 0 1cm white,
+      0 -1ch 1cm white;
+    mix-blend-mode: hard-light;
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+  @media (min-width: 500px) {
+    .form {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        "title ."
+        "name name"
+        "rest rest";
+    }
+  }
+  @media (min-width: 700px) {
+    .form {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+        "title . ."
+        "name name ."
+        "rest rest rest";
+    }
+  }
+}
