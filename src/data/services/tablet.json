@@ -1,0 +1,32 @@
+[
+  {
+    "name": "suitcase",
+    "service": "Business Consulting",
+    "description": "Offering expert guidance and advice on various aspects of business development, including market research, competitive analysis, and growth strategies."
+  },
+  {
+    "name": "device",
+    "service": "Custom Software Development",
+    "description": "Designing and building tailored software solutions to meet specific business needs, including web applications, mobile apps, enterprise software, and other software products."
+  },
+  {
+    "name": "macbook",
+    "service": "Digital Transformation",
+    "description": "Guiding businesses through the process of embracing digital technologies, transitioning to a digital-first approach, including implementing digital marketing, e-commerce solutions, and data analytics."
+  },
+  {
+    "name": "store",
+    "service": "Market Expansion and Entry",
+    "description": "Supporting businesses in expanding their market reach, both domestically and internationally, through market research, market entry strategies, and partnership development."
+  },
+  {
+    "name": "shake-hands",
+    "service": "Partnership and Collaboration",
+    "description": "Facilitating strategic partnerships and collaborations with other companies, startups, or industry experts to drive innovation and create synergies."
+  },
+  {
+    "name": "government",
+    "service": "Project Management",
+    "description": "Providing project management expertise to ensure smooth execution and successful delivery of business and technology initiatives, including managing timelines, budgets, and resources."
+  }
+]

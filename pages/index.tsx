@@ -1,4 +1,6 @@
 import { Header, Footer } from "../src/components";
+import { GetInTouch } from "../src/forms";
+import { DesktopServices, TabletServices, MobileServices } from "../src/home";
 import {
   Billboard,
   Clients,
@@ -6,7 +8,6 @@ import {
   OurApproach,
   Products,
   Testimony,
-  GetInTouch,
 } from "../src/home";
 
 export default function Page() {
@@ -15,7 +16,11 @@ export default function Page() {
       <Header />
       <Billboard />
       <Clients />
-      <Services />
+      <Services>
+        <DesktopServices />
+        <TabletServices />
+        <MobileServices />
+      </Services>
       <Products />
       <OurApproach />
       <Testimony />

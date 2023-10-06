@@ -5,15 +5,18 @@ import { Button, Checkbox, FileInput, Select, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useMemo } from "react";
 import { CaretDownIcon } from "@radix-ui/react-icons";
+import { PhoneNumber } from "../components";
 
 import Link from "next/link";
+import { INDUSTRY, REVENUE } from "./options";
 
-interface Inputs {
+interface FormProps {
   title: string;
   first_name: string;
   last_name: string;
   position: string;
   email: string;
+  country_code: string;
   phone_number: string;
   company_name: string;
   company_location: string;
@@ -23,76 +26,15 @@ interface Inputs {
   terms_and_conditions: boolean;
 }
 
-const SALE = [
-  "Home / Office",
-  "Furniture",
-  "Consumer",
-  "Electronics",
-  "Fashion",
-  "Automotive",
-  "Lifestyle",
-  "Product",
-  "Others",
-];
-
-const WEBSITE = ["Yes", "No"];
-
-const REVENUE = [
-  "Unknown / None",
-  "Less than $10k",
-  "$11k - $100K",
-  "$101k - $200k",
-  "$201k - $500k",
-  "$501k - $1M",
-  "$1M - $3M",
-  "$3M +",
-  "I prefer not to say",
-];
-
-const ESTIMATE = [
-  "Less than 100k",
-  "100k - 1k",
-  "1k - 10k",
-  "10k - 100k",
-  "Greater than 100k",
-];
-
-const INDUSTRY = [
-  "Advanced Manufacturing & Services",
-  "Aerospace, Defense, & Government Services",
-  "Agribusiness",
-  "Automotive & Mobility",
-  "Aviation",
-  "Chemicals",
-  "Consumer Products",
-  "Energy & Natural Resources",
-  "Financial Services",
-  "Forest Products, Paper & Packaging",
-  "Healthcare & Life Sciences",
-  "Infrastructure, Construction & Building Products",
-  "Machinery & Equipment",
-  "Media & Entertainment",
-  "Metals",
-  "Oil & Gas",
-  "Private Equity",
-  "Retail",
-  "Real Estate",
-  "Technology",
-  "Social & Public Sector",
-  "Telecommunications",
-  "Transportation",
-  "Utilities & Renewables",
-  "Others",
-];
-
 export function GetInTouch() {
-  const form = useForm<Inputs>({
+  const form = useForm<FormProps>({
     initialValues: {
       title: "",
       first_name: "",
       last_name: "",
       position: "",
       email: "",
+      country_code: "",
       phone_number: "",
       company_name: "",
       company_location: "",
@@ -103,19 +45,22 @@ export function GetInTouch() {
     },
   });
 
-  const callingCodes = countries.all.flatMap(
-    ({ countryCallingCodes }) => countryCallingCodes
-  );
-
   const countriesOptions = useMemo(() => {
-    return countries.all;
+    return countries.all.map((props) => props.name);
   }, []);
 
+  const handleSubmit = (values: FormProps) => {};
+
   return (
-    <section className="flex flex-col gap-20 pt-16 pb-20 bg-smoky-black">
+    <section
+      id="get-in-touch"
+      className="flex flex-col gap-20 pt-16 pb-20 bg-smoky-black"
+    >
       <div className="flex flex-col max-w-screen-xl gap-4 px-2 mx-auto clump:px-[clamp(8px,5vw,5rem)]">
         <header className="flex flex-col gap-1 text-white">
-          <h2 className="text-5xl font-bold">Get in Touch</h2>
+          <h2 className="text-5xl clump:text-[clamp(2.05rem,4vw,3.75rem)] font-bold">
+            Get in Touch
+          </h2>
           <p>
             Please take a few moments to complete this form. Documents can be
             uploaded if needed to clarify your request. All other inquiries
@@ -123,6 +68,7 @@ export function GetInTouch() {
           </p>
         </header>
         <form
+          onSubmit={form.onSubmit(handleSubmit)}
           className="flex flex-col gap-5 p-5 bg-white text-dark-puce max-w-[54rem]"
           id="get-in-touch"
         >
@@ -134,9 +80,6 @@ export function GetInTouch() {
               label="Title"
               placeholder="Mr"
               {...form.getInputProps("title")}
-              classNames={{
-                label: "text-dark-puce font-normal",
-              }}
             />
           </fieldset>
           <fieldset
@@ -147,20 +90,12 @@ export function GetInTouch() {
               withAsterisk
               label="Firstname"
               placeholder="John"
-              classNames={{
-                required: "text-violet",
-                label: "text-dark-puce font-normal",
-              }}
               {...form.getInputProps("first_name")}
             />
             <TextInput
               withAsterisk
               label="Lastname"
               placeholder="Doe"
-              classNames={{
-                required: "text-violet",
-                label: "text-dark-puce font-normal",
-              }}
               {...form.getInputProps("last_name")}
             />
           </fieldset>
@@ -171,65 +106,33 @@ export function GetInTouch() {
             <TextInput
               label="Position"
               placeholder="CTO"
-              classNames={{
-                label: "text-dark-puce font-normal",
-              }}
               {...form.getInputProps("position")}
             />
             <TextInput
               withAsterisk
               label="Email"
-              classNames={{
-                required: "text-violet",
-                label: "text-dark-puce font-normal",
-              }}
               placeholder="johndoe@gmail.com"
               {...form.getInputProps("email")}
             />
-            <TextInput
-              classNames={{
-                label: "text-dark-puce font-normal",
-                icon: "pointer-events-auto w-20 relative",
-                wrapper: "flex gap-2",
-                input: "pl-0",
-              }}
-              icon={
-                <Select
-                  size="xs"
-                  rightSection={<></>}
-                  aria-labelledby="phone_number"
-                  data={callingCodes}
-                  classNames={{
-                    input: "pr-0 pl-0 border-none",
-                  }}
-                />
-              }
-              id="phone_number"
+
+            <PhoneNumber
               label="Phone Number"
-              placeholder="809345335"
+              selectProps={{ ...form.getInputProps("country_code") }}
+              inputProps={{ ...form.getInputProps("phone_number") }}
             />
 
             <TextInput
               withAsterisk
               label="Company Name"
               placeholder="Apple"
-              classNames={{
-                required: "text-violet",
-                label: "text-dark-puce font-normal",
-              }}
               {...form.getInputProps("company_name")}
             />
             <Select
               withAsterisk
-              data={countriesOptions.map((props) => props.name)}
+              data={countriesOptions}
               label="Company Location"
               placeholder="Nigeria"
               rightSection={<CaretDownIcon color="#B0B0B0" />}
-              classNames={{
-                required: "text-violet",
-                label: "text-dark-puce font-normal",
-                rightSection: "pointer-events-none",
-              }}
               {...form.getInputProps("company_location")}
             />
             <Select
@@ -237,10 +140,6 @@ export function GetInTouch() {
               label="Industry"
               placeholder="Retail"
               rightSection={<CaretDownIcon color="#B0B0B0" />}
-              classNames={{
-                label: "text-dark-puce font-normal",
-                rightSection: "pointer-events-none",
-              }}
               {...form.getInputProps("industry")}
             />
             <Select
@@ -248,19 +147,12 @@ export function GetInTouch() {
               label="Yearly Revenue"
               placeholder="Less than $10k"
               rightSection={<CaretDownIcon color="#B0B0B0" />}
-              classNames={{
-                label: "text-dark-puce font-normal",
-                rightSection: "pointer-events-none",
-              }}
               {...form.getInputProps("revenue")}
             />
             <FileInput
               multiple
-              label="Upload Files"
+              label="Upload File"
               placeholder="Proposals.pdf"
-              classNames={{
-                label: "text-dark-puce font-normal",
-              }}
               {...form.getInputProps("files")}
             />
           </fieldset>
@@ -271,12 +163,18 @@ export function GetInTouch() {
             label={
               <span>
                 I have read and accepted the{" "}
-                <Link href="" className="underline underline-offset-4">
+                <Link
+                  href="/terms-of-use"
+                  className="underline underline-offset-4"
+                >
                   Terms of Use
                 </Link>
                 . Please read our{" "}
-                <Link href="" className="underline underline-offset-4">
-                  Privacy Statement
+                <Link
+                  href="/privacy-policy"
+                  className="underline underline-offset-4"
+                >
+                  Privacy Policy
                 </Link>{" "}
                 to understand how we plan to use your personal information. *
               </span>
@@ -287,6 +185,7 @@ export function GetInTouch() {
           <Button
             h="auto"
             w="max-content"
+            type="submit"
             disabled={!form.values.terms_and_conditions}
             classNames={{
               root: "bg-chinese-black",

@@ -5,4 +5,4 @@ export * from "./services";
 export * from "./our-approach";
 export * from "./products";
 export * from "./testimony";
-export * from "./get-in-touch";
+export * from "./services";

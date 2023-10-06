@@ -1,7 +1,8 @@
-import Image from "next/image";
-import SERVICES from "../data/services.json";
+import { ComponentProps } from "react";
 
-export function Services() {
+interface ServicesProps extends ComponentProps<"div"> {}
+
+export function Services({ children }: ServicesProps) {
   return (
     <section className="bg-smoky-black">
       <div className="py-14 px-2 relative clump:px-[clamp(8px,5vw,5rem)] max-w-screen-xl mx-auto gap-16 flex flex-col">
@@ -37,30 +38,10 @@ export function Services() {
             fillOpacity="0.21"
           />
         </svg>
-        <h2 className="text-5xl font-bold text-white">Services</h2>
-        <div className="flex flex-wrap gap-12">
-          {SERVICES.map(({ service, name, description }) => {
-            return (
-              <article
-                key={service}
-                className="relative flex-1 text-white basis-56"
-              >
-                <figure className="p-2 bg-white rounded-full w-fit">
-                  <Image
-                    src={`./sprites/${name}.svg`}
-                    alt={name}
-                    height={24}
-                    width={24}
-                  />
-                </figure>
-                <h3 className="text-lg font-bold mt-3.5">{service}</h3>
-                <p className="text-philippine-gray text-sm mt-2.5">
-                  {description}
-                </p>
-              </article>
-            );
-          })}
-        </div>
+        <h2 className="text-5xl clump:text-[clamp(2.05rem,4vw,3.75rem)] font-bold text-white">
+          Services
+        </h2>
+        {children}
       </div>
     </section>
   );

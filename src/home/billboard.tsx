@@ -1,9 +1,47 @@
+import clsx from "clsx";
+import Image from "next/image";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { useEffect, useState } from "react";
+
 export function Billboard() {
+  const [parent] = useAutoAnimate({ duration: 500 });
+  // const [images, setImages] = useState([
+  //   "main-4",
+  //   "main-3",
+  //   "main-2",
+  //   "main-1",
+  // ]);
+
+  const images = [
+    {
+      url: "img1.jpeg",
+      rotate: 0,
+    },
+    {
+      url: "img2.jpeg",
+      rotate: -6,
+    },
+    { url: "main-1.png", rotate: -10 },
+  ];
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     const juggled = [...images];
+  //     juggled.push(juggled.shift() as string);
+  //     setImages(juggled);
+  //   }, 1000);
+  // }, [images]);
+
   return (
-    <section className="flex relative gap-6 px-2 clump:px-[clamp(8px,5vw,5rem)] max-w-screen-xl mx-auto">
-      <article className="flex flex-col basis-7/12 gap-6 self-center py-[clamp(1rem,8vw,7.5rem)]">
-        <h3 className="text-6xl font-bold">
-          <span className="">Enabling Business Success in a</span>{" "}
+    <section
+      className={clsx(
+        "flex relative md:gap-x-6 px-2 clump:px-[clamp(8px,5vw,5rem)]",
+        "max-w-screen-xl mx-auto flex-col sm:flex-row overflow-hidden"
+      )}
+    >
+      <article className="flex flex-col sm:basis-7/12 gap-6 self-center py-4 clump:py-[clamp(1rem,8vw,7.5rem)]">
+        <h3 className="text-4xl font-bold clump:text-[clamp(2.05rem,4vw,3.75rem)] md:leading-none">
+          <span>Enabling Business Success in a</span>{" "}
           <span className="text-violet mix-blend-difference">
             Dynamic Landscape
           </span>
@@ -14,16 +52,40 @@ export function Billboard() {
           competitive industries through comprehensive services.
         </p>
       </article>
-      <div className="grid overflow-visible basis-5/12">
-        <figure className="[grid-area:1/1]"></figure>
-      </div>
+      <figure
+        className={clsx(
+          "sm:bg-gradient-to-b sm:from-vampire-black sm:from-0% sm:to-davys-grey sm:to-100%",
+          "overflow-visible grid sm:basis-5/12 bg-transparent w-full self-center",
+          "sm:ml-14 sm:clump:ml-[clamp(0px,4vw,3.5rem)] sm:my-14 sm:clump:my-[clamp(0px,4vw,3.5rem)]",
+          "p-5 clump:py-[clamp(1.25rem,8vw,3.5rem)] clump:px-[clamp(0rem,6vw,3.5rem)] sm:p-0",
+          "flex-1 aspect-square rounded-[0.875rem] h-fit sm:w-[clamp(30vw,60vw,100vw)]"
+        )}
+      >
+        {images.map(({ url, rotate }) => (
+          <Image
+            key={url}
+            style={{
+              rotate: `${rotate}deg`,
+            }}
+            className={clsx(
+              "!relative object-cover [grid-area:1/1] rounded-[0.875rem] aspect-square"
+            )}
+            src={`/images/${url}`}
+            alt="point of sale"
+            fill
+          />
+        ))}
+      </figure>
       <svg
         width="739"
         height="423"
         viewBox="0 0 739 423"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute right-0 bottom-0 h-2/3 sm:clump:mr-[clamp(8px,5vw,5rem)] -z-10"
+        className={clsx(
+          // "sm:clump:mr-[clamp(8px,5vw,5rem)]",
+          "absolute bottom-0 sm:right-0 h-2/3 -z-10"
+        )}
       >
         <path
           fillRule="evenodd"

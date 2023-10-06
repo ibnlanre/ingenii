@@ -2,7 +2,10 @@ const plugin = require("tailwindcss/plugin");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -12,6 +15,7 @@ module.exports = {
         "philippine-gray": "#8A8A8A",
         "silver-foil": "#B0B0B0",
         lotion: "#FAFAFA",
+        "ghost-white": "#F9F8F9",
         begonia: "#FF7070",
         violet: "#8300EB",
         "pale-lavender": "#E4D3F1",

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "suitcase",
+    "service": "Business Consulting",
+    "description": "Offering expert guidance and advice on various aspects of business development, including market research, competitive analysis, and growth strategies."
+  },
+  {
+    "name": "device",
+    "service": "Custom Software Development",
+    "description": "Designing and building tailored software solutions to meet specific business needs, including web applications, mobile apps, enterprise software, and other software products."
+  },
+  {
+    "name": "government",
+    "service": "Project Management",
+    "description": "Providing project management expertise to ensure smooth execution and successful delivery of business and technology initiatives, including managing timelines, budgets, and resources."
+  }
+]

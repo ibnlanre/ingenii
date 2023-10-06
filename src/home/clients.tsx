@@ -3,8 +3,10 @@ import Image from "next/image";
 export function Clients() {
   return (
     <section className="flex flex-col max-w-screen-xl gap-6 py-8 mx-auto place-items-center">
-      <h2 className="text-3xl font-bold text-center">Clients we have worked with</h2>
-      <div className="flex flex-wrap gap-7">
+      <h2 className="text-3xl font-bold text-center clump:text-[clamp(1.25rem,3vw,1.875rem)]">
+        Clients we have worked with
+      </h2>
+      <div className="flex flex-wrap gap-x-7 gap-y-2">
         <figure className="w-40 h-16 mx-auto">
           <Image
             width={346}
@@ -45,5 +47,3 @@ export function Clients() {
     </section>
   );
 }
-
-

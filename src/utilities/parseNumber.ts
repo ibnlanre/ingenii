@@ -3,11 +3,8 @@ import {
   parsePhoneNumber as parser,
 } from "awesome-phonenumber";
 
-export function parsePhone(
-  phone_number: string = "",
-  code: string = "+234"
-) {
-  const regionCode = getRegionCodeForCountryCode(+code);
+export function parsePhone(phone_number: string = "", code: string | null) {
+  const regionCode = getRegionCodeForCountryCode(+(code ?? "+234"));
   const phone = parser(phone_number, { regionCode });
   return {
     code: `+${phone.countryCode ?? 234}`,
