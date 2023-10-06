@@ -1,4 +1,4 @@
-import { Divider } from "@mantine/core";
+import { ActionIcon, Avatar, Divider } from "@mantine/core";
 import { ComponentProps, ComponentPropsWithoutRef, ReactNode } from "react";
 
 import { Facebook, Instagram, Linkedin, Twitter } from "./icons";
@@ -86,17 +86,27 @@ export function Footer({
 
         <Divider color="#BBBBBB" />
 
-        <address className="flex gap-4">
-          {SOCIALS.map(({ icon, link }, idx) => {
-            return (
-              <Link key={idx} href={link}>
-                <figure className={clsx("p-2 rounded-full bg-violet", socials)}>
-                  {icon}
-                </figure>
-              </Link>
-            );
-          })}
-        </address>
+        <section className="flex items-center justify-between">
+          <address className="flex gap-4">
+            {SOCIALS.map(({ icon, link }, idx) => {
+              return (
+                <Link key={idx} href={link}>
+                  <figure
+                    className={clsx("p-2 rounded-full bg-violet", socials)}
+                  >
+                    {icon}
+                  </figure>
+                </Link>
+              );
+            })}
+          </address>
+
+          <Link href="https://www.ingeniihq.com/">
+            <ActionIcon w="fit-content" h="fit-content">
+              <Avatar src="/ingenii-icon.png" alt="Ingenii Icon" />
+            </ActionIcon>
+          </Link>
+        </section>
       </div>
     </footer>
   );

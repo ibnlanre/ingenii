@@ -2,6 +2,7 @@ import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import type { AppProps } from "next/app";
 
+import { FavIcon } from "../src/components";
 import "../src/global.css";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -125,6 +126,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         },
       }}
     >
+      <FavIcon />
       <ModalsProvider>
         <Component {...pageProps} />
       </ModalsProvider>

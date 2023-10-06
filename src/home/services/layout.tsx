@@ -4,7 +4,7 @@ interface ServicesProps extends ComponentProps<"div"> {}
 
 export function Services({ children }: ServicesProps) {
   return (
-    <section className="bg-smoky-black">
+    <section id="services" className="bg-smoky-black">
       <div className="py-14 px-2 relative clump:px-[clamp(8px,5vw,5rem)] max-w-screen-xl mx-auto gap-16 flex flex-col">
         <svg
           width="861"

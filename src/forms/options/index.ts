@@ -42,6 +42,14 @@ export const SHOP = [
   "Others",
 ];
 
+export const REASONS = [
+  "Business Inquiry: I am exploring hiring Ingenii",
+  "Partnership Request: I'd like to collaborate with Ingenii on a project or enterprise",
+  "Press Relations: I'm a member of the media seeking an Ingenii expert's comment",
+  "Speaker request: I'd love to have an Igenii expert speak at my event, Career Information, I'd love to work at Ingenii",
+  "Others",
+];
+
 export const ESTIMATE = [
   "Less than 100k",
   "100k - 1k",

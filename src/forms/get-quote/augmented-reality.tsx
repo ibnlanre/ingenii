@@ -21,6 +21,8 @@ interface FormProps {
   revenue: string;
   full_name: string;
   email: string;
+  country_code: string;
+  phone_number: string;
   company_name: string;
   company_location: string;
   stores: string;
@@ -35,6 +37,8 @@ export function GetQuoteAugmentedReality() {
       revenue: "",
       full_name: "",
       email: "",
+      country_code: "",
+      phone_number: "",
       company_name: "",
       company_location: "",
       stores: "",
@@ -48,7 +52,7 @@ export function GetQuoteAugmentedReality() {
   const handleSubmit = (values: FormProps) => {};
 
   return (
-    <form onSubmit={form.onSubmit(handleSubmit)}>
+    <div>
       <Stack className="p-1 clump:p-[clamp(0.3125rem,2vw,1rem)]">
         <h2 className="text-5xl clump:text-[clamp(2.05rem,4vw,3.75rem)] font-bold">
           Get Quote
@@ -64,6 +68,7 @@ export function GetQuoteAugmentedReality() {
           </Text>
 
           <form
+            onSubmit={form.onSubmit(handleSubmit)}
             className="flex flex-col gap-5 bg-white text-dark-puce max-w-[54rem]"
             id="get-quote_augmented-reality"
           >
@@ -180,6 +185,6 @@ export function GetQuoteAugmentedReality() {
           </form>
         </Stack>
       </Stack>
-    </form>
+    </div>
   );
 }

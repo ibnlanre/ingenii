@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Clients() {
   return (
-    <section className="flex flex-col max-w-screen-xl gap-6 py-8 mx-auto place-items-center">
+    <section id="clients" className="flex flex-col max-w-screen-xl gap-6 py-8 mx-auto place-items-center">
       <h2 className="text-3xl font-bold text-center clump:text-[clamp(1.25rem,3vw,1.875rem)]">
         Clients we have worked with
       </h2>
