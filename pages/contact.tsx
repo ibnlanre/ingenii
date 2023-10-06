@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { Footer, Header } from "../src/components";
 import { ContactUs } from "../src/forms";
 
@@ -5,7 +6,12 @@ export default function Contact() {
   return (
     <main>
       <Header />
-      <section className="max-w-screen-xl py-14 gap-6 px-2 mx-auto clump:px-[clamp(8px,5vw,5rem)] relative">
+      <section
+        className={clsx(
+          "py-14 px-2 mx-auto clump:px-[clamp(8px,5vw,5rem)]",
+          "max-w-screen-xl gap-6 relative overflow-hidden"
+        )}
+      >
         <ContactUs />
       </section>
       <Footer

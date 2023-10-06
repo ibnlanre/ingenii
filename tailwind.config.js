@@ -18,6 +18,7 @@ module.exports = {
         "ghost-white": "#F9F8F9",
         begonia: "#FF7070",
         violet: "#8300EB",
+        "electric-violet": "#8F00FF",
         "pale-lavender": "#E4D3F1",
         "chinese-black": "#111111",
         "vampire-black": "#050505",

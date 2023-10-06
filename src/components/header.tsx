@@ -1,4 +1,4 @@
-import { ActionIcon, Drawer, MediaQuery } from "@mantine/core";
+import { ActionIcon, Drawer, MediaQuery, Stack } from "@mantine/core";
 import { ReactNode, useState } from "react";
 import { Burger } from "./icons";
 
@@ -72,15 +72,20 @@ export function Header() {
               setDrawerProps({
                 isOpened: true,
                 component: (
-                  <ul className="flex gap-5">
-                    {NAVIGATION.map(({ name, id }) => (
-                      <a key={id} href={`#${id}`}>
-                        <li className="hover:text-violet" key={id}>
-                          {name}
-                        </li>
-                      </a>
-                    ))}
-                  </ul>
+                  <Stack className="text-white" spacing={30}>
+                    <p className="text-3xl font-semiboldclump:text-[clamp(1.25rem,3vw,1.875rem)]">
+                      Menu
+                    </p>
+                    <ul className="flex flex-col gap-5">
+                      {NAVIGATION.map(({ name, id }) => (
+                        <a key={id} href={`#${id}`}>
+                          <li className="py-1.5 hover:text-electric-violet" key={id}>
+                            {name}
+                          </li>
+                        </a>
+                      ))}
+                    </ul>
+                  </Stack>
                 ),
               });
             }}
@@ -91,6 +96,11 @@ export function Header() {
       </nav>
 
       <Drawer
+        classNames={{
+          content:
+          "bg-smoky-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50",
+          inner: "max-w-[75vw]",
+        }}
         withCloseButton={false}
         opened={drawerProps.isOpened}
         onClose={() => setDrawerProps({ isOpened: false, component: null })}
