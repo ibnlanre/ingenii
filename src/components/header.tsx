@@ -79,7 +79,15 @@ export function Header() {
                     <ul className="flex flex-col gap-5">
                       {NAVIGATION.map(({ name, id }) => (
                         <a key={id} href={`#${id}`}>
-                          <li className="py-1.5 hover:text-electric-violet" key={id}>
+                          <li
+                            style={{
+                              backgroundImage:
+                                "linear-gradient(rgba(0, 0, 0, 0) 95%, #FFF 0px)",
+                              backgroundRepeat: "no-repeat",
+                            }}
+                            className="py-1.5 duration-300  bg-[length:_0%_100%] hover:bg-[length:_100%_100%]"
+                            key={id}
+                          >
                             {name}
                           </li>
                         </a>
@@ -98,7 +106,7 @@ export function Header() {
       <Drawer
         classNames={{
           content:
-          "bg-smoky-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50",
+            "bg-smoky-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50",
           inner: "max-w-[75vw]",
         }}
         withCloseButton={false}
