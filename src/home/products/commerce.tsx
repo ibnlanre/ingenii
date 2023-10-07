@@ -114,7 +114,7 @@ export function Commerce() {
 
       <figure
         className={clsx(
-          "flex-1 grid aspect-square h-fit w-full max-w-[440px]",
+          "flex-1 grid aspect-square h-fit w-full max-w-[500px]",
           "p-5 clump:py-[clamp(1.25rem,2vw,3.5rem)] clump:px-[clamp(0rem,2vw,3.5rem)] sm:p-0",
           "md:m-5 mr-0 md:clump:my-[clamp(1.25rem,8vw,3.5rem)] md:clump:ml-[clamp(0rem,6vw,3.5rem)]"
         )}

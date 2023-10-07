@@ -15,7 +15,7 @@ export function PointOfSale() {
     <section className="flex flex-col md:items-center flex-wrap gap-x-4 md:flex-row gap-y-8 clump:gap-x-[clamp(1rem,2vw,6rem)]">
       <figure
         className={clsx(
-          "flex-1 grid aspect-square h-fit w-full max-w-[440px]",
+          "flex-1 grid aspect-square h-fit w-full max-w-[500px]",
           "p-5 clump:py-[clamp(1.25rem,2vw,3.5rem)] clump:px-[clamp(0rem,2vw,3.5rem)] sm:p-0",
           "md:m-5 ml-0 md:clump:my-[clamp(1.25rem,8vw,3.5rem)] md:clump:mr-[clamp(0rem,6vw,3.5rem)]"
         )}
