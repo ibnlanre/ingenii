@@ -19,8 +19,8 @@ const MENU: Array<{ label: string; link: Url }> = [
     link: "about-us",
   },
   {
-    label: "Contact Us",
-    link: "contact-us",
+    label: "Contact",
+    link: "contact",
   },
   {
     label: "Terms of use",
@@ -64,7 +64,7 @@ export function Footer({
 }: FooterProps) {
   return (
     <footer className={clsx("pb-6 pt-9", className)}>
-      <div className="flex flex-col max-w-screen-xl gap-6 px-2 mx-auto clump:px-[clamp(8px,5vw,5rem)]">
+      <div className="flex flex-col max-w-8xl gap-6 px-2 mx-auto clump:px-[clamp(8px,5vw,5rem)]">
         <section className="flex flex-wrap items-center justify-between gap-x-3.5 gap-y-8">
           <address className="max-w-[20rem] not-italic">
             KM 18, Lekki Epe Expressway, Agungi bus stop, Lekki, Lagos.

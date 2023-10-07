@@ -56,7 +56,7 @@ export function GetInTouch() {
       id="get-in-touch"
       className="flex flex-col gap-20 pt-16 pb-20 bg-smoky-black"
     >
-      <div className="flex flex-col max-w-screen-xl gap-4 px-2 mx-auto clump:px-[clamp(8px,5vw,5rem)]">
+      <div className="flex flex-col max-w-8xl gap-4 px-2 mx-auto clump:px-[clamp(8px,5vw,5rem)]">
         <header className="flex flex-col gap-1 text-white">
           <h2 className="text-5xl clump:text-[clamp(2.05rem,4vw,3.75rem)] font-bold">
             Get in Touch
@@ -176,7 +176,8 @@ export function GetInTouch() {
                 >
                   Privacy Policy
                 </Link>{" "}
-                to understand how we plan to use your personal information. *
+                to understand how we plan to use your personal{" "}
+                <span className="whitespace-nowrap">information. *</span>
               </span>
             }
             {...form.getInputProps("terms_and_conditions")}

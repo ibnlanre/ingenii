@@ -27,7 +27,7 @@ export function Header() {
 
   return (
     <>
-      <nav className="flex justify-between py-7 px-2 clump:px-[clamp(8px,5vw,5rem)] max-w-screen-xl mx-auto">
+      <nav className="flex justify-between py-7 px-2 clump:px-[clamp(8px,5vw,5rem)] max-w-8xl mx-auto">
         <Link className="flex-grow" href="/">
           <Image
             className="!relative max-w-[100px]"
@@ -77,21 +77,29 @@ export function Header() {
                       Menu
                     </p>
                     <ul className="flex flex-col gap-5">
-                      {NAVIGATION.map(({ name, id }) => (
-                        <a key={id} href={`#${id}`}>
-                          <li
-                            style={{
-                              backgroundImage:
-                                "linear-gradient(rgba(0, 0, 0, 0) 95%, #FFF 0px)",
-                              backgroundRepeat: "no-repeat",
-                            }}
-                            className="py-1.5 duration-300  bg-[length:_0%_100%] hover:bg-[length:_100%_100%]"
-                            key={id}
-                          >
-                            {name}
-                          </li>
-                        </a>
-                      ))}
+                      {NAVIGATION.map(({ name, id, to }) => {
+                        const path = {
+                          pathname: "/",
+                          hash: id,
+                        };
+                        const href = !id ? to : path;
+
+                        return (
+                          <Link key={name} href={href}>
+                            <li
+                              style={{
+                                backgroundImage:
+                                  "linear-gradient(rgba(0, 0, 0, 0) 95%, #FFF 0px)",
+                                backgroundRepeat: "no-repeat",
+                              }}
+                              className="py-1.5 duration-300  bg-[length:_0%_100%] hover:bg-[length:_100%_100%]"
+                              key={id}
+                            >
+                              {name}
+                            </li>
+                          </Link>
+                        );
+                      })}
                     </ul>
                   </Stack>
                 ),

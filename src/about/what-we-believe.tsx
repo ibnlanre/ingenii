@@ -17,14 +17,14 @@ export function WhatWeBelieve() {
     <section
       className={clsx(
         "flex relative md:gap-x-6 px-2 clump:px-[clamp(8px,5vw,5rem)] items-center",
-        "max-w-screen-xl mx-auto flex-col-reverse sm:flex-row overflow-hidden py-11"
+        "max-w-8xl mx-auto flex-col-reverse sm:flex-row overflow-hidden py-11"
       )}
     >
-      <article className="flex flex-col sm:basis-7/12 gap-3.5">
-        <h3 className="text-3xl font-bold clump:text-[clamp(1.5rem,3vw,1.875rem)] text-smoky-black leading-normal">
+      <article className="flex flex-col sm:basis-7/12 gap-3.5 text-smoky-black isolate">
+        <h3 className="text-3xl font-bold clump:text-[clamp(1.5rem,3vw,1.875rem)] leading-normal">
           What we believe
         </h3>
-        <p className="text-2xl clump:text-[clamp(1.15rem,3vw,1.5rem)] text-philippine-gray leading-normal lighten mix-blend-hard-light">
+        <p className="text-2xl clump:text-[clamp(1.15rem,3vw,1.5rem)] text-philippine-gray leading-normal lighten">
           We believe in the power of business to shape a better future. Through
           sustainable growth, responsible practices, and unwavering dedication
           to excellence and integrity, we aim to make a positive impact that

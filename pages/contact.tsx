@@ -9,7 +9,7 @@ export default function Contact() {
       <section
         className={clsx(
           "py-14 px-2 mx-auto clump:px-[clamp(8px,5vw,5rem)]",
-          "max-w-screen-xl gap-6 relative overflow-hidden"
+          "max-w-8xl gap-6 relative overflow-hidden"
         )}
       >
         <ContactUs />

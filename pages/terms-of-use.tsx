@@ -1,12 +1,13 @@
 import { Stack, Text } from "@mantine/core";
 
-import { Header, Subtext } from "../src/components";
+import { Footer, Header, Subtext } from "../src/components";
 
 export default function TermsOfUse() {
   return (
     <main>
       <Header />
-      <div className="py-14 px-2 relative clump:px-[clamp(8px,5vw,5rem)] max-w-screen-xl mx-auto gap-16 flex flex-col">
+
+      <div className="py-14 px-2 relative clump:px-[clamp(8px,5vw,5rem)] max-w-8xl mx-auto gap-16 flex flex-col">
         <Stack spacing={48}>
           <Stack>
             <Text
@@ -362,6 +363,11 @@ export default function TermsOfUse() {
           </Text>
         </Stack>
       </div>
+
+      <Footer
+        className="text-chinese-black"
+        socials="text-white hover:text-white hover:bg-smoky-black"
+      />
     </main>
   );
 }

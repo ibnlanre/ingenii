@@ -21,16 +21,16 @@ export function Landing() {
     <section
       className={clsx(
         "flex relative md:gap-x-6 px-2 clump:px-[clamp(8px,5vw,5rem)] items-center",
-        "max-w-screen-xl mx-auto flex-col-reverse sm:flex-row overflow-hidden py-11"
+        "max-w-8xl mx-auto flex-col-reverse sm:flex-row overflow-hidden py-11"
       )}
     >
-      <article className="flex flex-col sm:basis-7/12 gap-3.5">
-        <h3 className="text-3xl font-bold clump:text-[clamp(1.5rem,3vw,1.875rem)] text-smoky-black leading-normal">
+      <article className="flex flex-col sm:basis-7/12 gap-3.5 isolate text-smoky-black">
+        <h3 className="text-3xl font-bold clump:text-[clamp(1.5rem,3vw,1.875rem)] leading-normal">
           About us
         </h3>
-        <p className="text-2xl clump:text-[clamp(1.15rem,3vw,1.5rem)] text-philippine-gray leading-normal">
+        <p className="text-2xl clump:text-[clamp(1.15rem,3vw,1.5rem)] leading-normal">
           <span className="text-violet mix-blend-difference">At Ingenii</span>
-          <span className="lighten mix-blend-hard-light">
+          <span className="lighten">
             , we are your trusted partner in driving business and technology
             development. As a leading consultancy, we offer a wide range of
             comprehensive services designed to empower businesses to thrive in

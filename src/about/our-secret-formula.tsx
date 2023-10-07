@@ -18,14 +18,14 @@ export function OurSecretFormula() {
     <section
       className={clsx(
         "flex relative md:gap-x-6 px-2 clump:px-[clamp(8px,5vw,5rem)] items-center",
-        "max-w-screen-xl mx-auto flex-col-reverse sm:flex-row overflow-hidden py-11"
+        "max-w-8xl mx-auto flex-col-reverse sm:flex-row overflow-hidden py-11"
       )}
     >
-      <article className="flex flex-col sm:basis-7/12 gap-3.5">
-        <h3 className="text-3xl font-bold clump:text-[clamp(1.5rem,3vw,1.875rem)] text-smoky-black leading-normal">
+      <article className="flex flex-col sm:basis-7/12 gap-3.5 text-smoky-black isolate">
+        <h3 className="text-3xl font-bold clump:text-[clamp(1.5rem,3vw,1.875rem)] leading-normal">
           Our secret formula
         </h3>
-        <Stack className="text-2xl clump:text-[clamp(1.15rem,3vw,1.5rem)] text-philippine-gray leading-normal lighten mix-blend-hard-light">
+        <Stack className="text-2xl clump:text-[clamp(1.15rem,3vw,1.5rem)] leading-normal lighten">
           <p>
             What sets us apart is not just our exceptional services, but also
             our unwavering dedication to your satisfaction. We forge strong

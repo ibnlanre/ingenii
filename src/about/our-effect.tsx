@@ -18,7 +18,7 @@ export function OurEffect() {
       <section
         className={clsx(
           "flex relative md:gap-x-6 px-2 clump:px-[clamp(8px,5vw,5rem)] items-center",
-          "max-w-screen-xl mx-auto flex-col sm:flex-row overflow-hidden py-11"
+          "max-w-8xl mx-auto flex-col sm:flex-row overflow-hidden py-11"
         )}
       >
         <figure

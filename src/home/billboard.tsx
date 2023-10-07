@@ -36,7 +36,7 @@ export function Billboard() {
     <section
       className={clsx(
         "flex relative md:gap-x-6 px-2 clump:px-[clamp(8px,5vw,5rem)]",
-        "max-w-screen-xl mx-auto flex-col sm:flex-row overflow-hidden"
+        "max-w-8xl mx-auto flex-col sm:flex-row overflow-hidden isolate"
       )}
     >
       <article className="flex flex-col sm:basis-7/12 gap-6 self-center py-4 clump:py-[clamp(1rem,8vw,7.5rem)]">
@@ -46,7 +46,7 @@ export function Billboard() {
             Dynamic Landscape
           </span>
         </h3>
-        <p className="text-lg lighten">
+        <p className="text-lg lighten mix-blend-hard-light">
           We empower businesses to conquer the ever-changing business and
           technology landscape, achieve their goals, and thrive in fiercely
           competitive industries through comprehensive services.

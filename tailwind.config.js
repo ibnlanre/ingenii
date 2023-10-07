@@ -27,6 +27,9 @@ module.exports = {
       boxShadow: {
         card: "14px 14px 30px 0px #F0F0F0",
       },
+      maxWidth: {
+        "8xl": 1440,
+      },
     },
   },
   plugins: [
