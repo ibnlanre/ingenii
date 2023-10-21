@@ -1,0 +1,32 @@
+[
+  {
+    "name": "database",
+    "service": "Online. In-store.All in one.",
+    "description": "Cloud-based POS: Seamless cross-channel shopping for customers. Time-saving back-end automation for you."
+  },
+  {
+    "name": "clipboard",
+    "service": "Streamlined Inventory management",
+    "description": "Make your best decisions with real-time info on your orders, margins, and product performance."
+  },
+  {
+    "name": "chart-pie",
+    "service": "Improve accuracy, redcue data entry",
+    "description": "Sales, payments, Inventory and customer data automatically sync."
+  },
+  {
+    "name": "money",
+    "service": "Faster checkouts, happier customers",
+    "description": "Use your smart phone or tablet to offer on-the-spot checkouts, anywhere. Customers will love you (and buy more)."
+  },
+  {
+    "name": "credit-card",
+    "service": "Next-generation-ready payments",
+    "description": "Accept the payment types your customers carry. Credit and debit cards, Apple Pay, Google Pay, and Tap-to-Pay on iPhone."
+  },
+  {
+    "name": "flat-screen-tv",
+    "service": "Hardware for anywhere",
+    "description": "Our hardware is ready for multiple sales types: In-store, multi-location, contactless and mobile."
+  }
+]

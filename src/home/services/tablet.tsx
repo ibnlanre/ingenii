@@ -1,6 +1,6 @@
 import { MediaQuery, Flex, Stack, clsx } from "@mantine/core";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { Service } from "./service";
+import { Card } from "../../components/card";
 
 import TABLET_SERVICES from "../../data/services/tablet.json";
 import Link from "next/link";
@@ -19,9 +19,9 @@ export function TabletServices() {
         <Flex wrap="wrap" gap={48}>
           {TABLET_SERVICES.map(({ service, name, description }) => {
             return (
-              <Service
+              <Card
                 key={service}
-                service={service}
+                title={service}
                 name={name}
                 description={description}
               />

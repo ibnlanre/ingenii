@@ -1,3 +1,4 @@
+export * from "./card";
 export * from "./favicon";
 export * from "./footer";
 export * from "./header";

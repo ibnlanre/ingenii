@@ -1,14 +1,14 @@
 import Image from "next/image";
 
-interface ServiceProps {
-  service: string;
+interface CardProps {
+  title: string;
   name: string;
   description: string;
 }
 
-export function Service({ service, name, description }: ServiceProps) {
+export function Card({ title, name, description }: CardProps) {
   return (
-    <article key={service} className="relative flex-1 text-white basis-56">
+    <article className="relative flex-1 text-white basis-56">
       <figure className="p-2 bg-white rounded-full w-fit">
         <Image
           src={`./sprites/${name}.svg`}
@@ -17,7 +17,7 @@ export function Service({ service, name, description }: ServiceProps) {
           width={24}
         />
       </figure>
-      <h3 className="text-lg font-bold mt-3.5">{service}</h3>
+      <h3 className="text-lg font-bold mt-3.5">{title}</h3>
       <p className="text-philippine-gray text-sm mt-2.5">{description}</p>
     </article>
   );

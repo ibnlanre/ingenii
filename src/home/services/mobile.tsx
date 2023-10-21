@@ -1,6 +1,6 @@
 import { MediaQuery, Flex, Stack } from "@mantine/core";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { Service } from "./service";
+import { Card } from "../../components/card";
 
 import MOBILE_SERVICES from "../../data/services/mobile.json";
 import Link from "next/link";
@@ -19,9 +19,9 @@ export function MobileServices() {
         <Flex wrap="wrap" gap={48}>
           {MOBILE_SERVICES.map(({ service, name, description }) => {
             return (
-              <Service
+              <Card
                 key={service}
-                service={service}
+                title={service}
                 name={name}
                 description={description}
               />

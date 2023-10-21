@@ -1,5 +1,5 @@
 import { MediaQuery, Flex, Box } from "@mantine/core";
-import { Service } from "./service";
+import { Card } from "../../components/card";
 
 import DESKTOP_SERVICES from "../../data/services/desktop.json";
 
@@ -15,9 +15,9 @@ export function DesktopServices() {
         <Flex wrap="wrap" gap={48}>
           {DESKTOP_SERVICES.map(({ service, name, description }) => {
             return (
-              <Service
+              <Card
                 key={service}
-                service={service}
+                title={service}
                 name={name}
                 description={description}
               />

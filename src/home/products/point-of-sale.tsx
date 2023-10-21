@@ -73,7 +73,7 @@ export function PointOfSale() {
                 aria-label="Get Qoute"
                 className={clsx(
                   "rounded-lg px-5 py-2.5 flex gap-0.5 items-center",
-                  "IconButton bg-violet text-white hover:bg-smoky-black"
+                  "bg-violet text-white hover:bg-smoky-black"
                 )}
               >
                 Get Quote

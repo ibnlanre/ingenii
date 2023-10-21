@@ -2,7 +2,7 @@ import { Flex } from "@mantine/core";
 
 import { Footer, Header } from "../src/components";
 import { Services } from "../src/home";
-import { Service } from "../src/home/services/service";
+import { Card } from "../src/components/card";
 
 import DESKTOP_SERVICES from "../src/data/services/desktop.json";
 
@@ -14,9 +14,9 @@ export default function ServicesPage() {
         <Flex wrap="wrap" gap={48}>
           {DESKTOP_SERVICES.map(({ service, name, description }) => {
             return (
-              <Service
+              <Card
                 key={service}
-                service={service}
+                title={service}
                 name={name}
                 description={description}
               />
