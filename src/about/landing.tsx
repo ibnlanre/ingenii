@@ -4,15 +4,15 @@ import Image from "next/image";
 export function Landing() {
   const images = [
     {
-      url: "img1.jpeg",
+      url: "image-1.jpeg",
       rotate: 10,
     },
     {
-      url: "img3.png",
+      url: "image-3.png",
       rotate: 0,
     },
     {
-      url: "img2.jpeg",
+      url: "image-2.jpeg",
       rotate: 4,
     },
   ];

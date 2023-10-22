@@ -1,12 +1,11 @@
 import { Flex } from "@mantine/core";
-
 import { Card } from "../../components/card";
-import CHANNELS from "../../data/channels.json";
-import { ReactNode } from "react";
 
-function Layout({ children }: { children: ReactNode }) {
+import CHANNELS from "../../data/channels.json";
+
+export function MultiChannel() {
   return (
-    <section className="bg-smoky-black">
+    <section className="overflow-hidden bg-smoky-black">
       <div className="py-14 px-2 relative clump:px-[clamp(8px,5vw,5rem)] max-w-8xl mx-auto gap-16 flex flex-col">
         <svg
           width="598"
@@ -41,30 +40,24 @@ function Layout({ children }: { children: ReactNode }) {
             fillOpacity="0.21"
           />
         </svg>
-        <h2 className="text-5xl clump:text-[clamp(2.05rem,4vw,3.75rem)] font-bold text-white text-center">
+        <h2 className="text-5xl clump:text-[clamp(2.05rem,4vw,3.75rem)] relative font-bold text-white text-center">
           Multi-channel retail made easy
         </h2>
-        {children}
+
+        <Flex pos="relative" wrap="wrap" gap={48}>
+          {CHANNELS.map(({ service, name, description }) => {
+            return (
+              <Card
+                key={service}
+                title={service}
+                name={name}
+                description={description}
+                className="basis-[clamp(14rem,20vw,20vw)]"
+              />
+            );
+          })}
+        </Flex>
       </div>
     </section>
-  );
-}
-
-export function MultiChannel() {
-  return (
-    <Layout>
-      <Flex wrap="wrap" gap={48}>
-        {CHANNELS.map(({ service, name, description }) => {
-          return (
-            <Card
-              key={service}
-              title={service}
-              name={name}
-              description={description}
-            />
-          );
-        })}
-      </Flex>
-    </Layout>
   );
 }

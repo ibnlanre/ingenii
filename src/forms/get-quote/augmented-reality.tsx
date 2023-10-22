@@ -9,10 +9,12 @@ import {
 import { useForm } from "@mantine/form";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { countries } from "@aerapass/country-data";
+import { modals } from "@mantine/modals";
 import { useMemo } from "react";
 
 import { PhoneNumber } from "../../components";
 import { ESTIMATE, REVENUE, SALE, WEBSITE } from "../options";
+import { RequestDemoAugmentedReality } from "../request-demo";
 
 interface FormProps {
   sale: string;
@@ -86,7 +88,7 @@ export function GetQuoteAugmentedReality() {
               />
             </fieldset>
             <fieldset
-              className="grid gap-5 min-[550px]:grid-cols-2"
+              className="grid gap-5 min-[550px]:grid-cols-2 items-baseline"
               form="get-quote_augmented-reality"
             >
               <Select
@@ -112,7 +114,7 @@ export function GetQuoteAugmentedReality() {
               />
             </fieldset>
             <fieldset
-              className="grid gap-5 min-[550px]:grid-cols-2"
+              className="grid gap-5 min-[550px]:grid-cols-2 items-baseline"
               form="get-quote_augmented-reality"
             >
               <TextInput
@@ -165,8 +167,18 @@ export function GetQuoteAugmentedReality() {
 
             <Text component="p" fz={24} fw={500}>
               You can{" "}
-              <Text span c="#8300EB">
-                get quote
+              <Text
+                c="#8300EB"
+                component="button"
+                onClick={() => {
+                  modals.closeAll();
+                  modals.open({
+                    withCloseButton: false,
+                    children: <RequestDemoAugmentedReality />,
+                  });
+                }}
+              >
+                request demo
               </Text>
             </Text>
 

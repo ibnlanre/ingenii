@@ -4,7 +4,7 @@ import Image from "next/image";
 export function OurEffect() {
   const images = [
     {
-      url: "img1.jpeg",
+      url: "image-1.jpeg",
       rotate: 10,
     },
     {

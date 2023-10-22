@@ -91,7 +91,7 @@ export function ContactUs() {
               />
             </fieldset>
             <fieldset
-              className="grid gap-5 min-[550px]:grid-cols-2"
+              className="grid gap-5 min-[550px]:grid-cols-2 items-baseline"
               form="contact-us"
             >
               <TextInput
@@ -108,7 +108,7 @@ export function ContactUs() {
               />
             </fieldset>
             <fieldset
-              className="grid gap-5 min-[550px]:grid-cols-2"
+              className="grid gap-5 min-[550px]:grid-cols-2 items-baseline"
               form="contact-us"
             >
               <TextInput

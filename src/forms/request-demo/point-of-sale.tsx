@@ -9,10 +9,12 @@ import {
 import { useForm } from "@mantine/form";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { countries } from "@aerapass/country-data";
+import { modals } from "@mantine/modals";
 import { useMemo } from "react";
 
 import { PhoneNumber } from "../../components";
 import { INDUSTRY, REVENUE, SALE } from "../options";
+import { GetQuotePointOfSale } from "../get-quote";
 
 interface FormProps {
   industry: string;
@@ -69,7 +71,7 @@ export function RequestDemoPointOfSale() {
             id="request-demo_point-of-sale"
           >
             <fieldset
-              className="grid gap-5 min-[550px]:grid-cols-2"
+              className="grid gap-5 min-[550px]:grid-cols-2 items-baseline"
               form="request-demo_point-of-sale"
             >
               <Select
@@ -102,7 +104,7 @@ export function RequestDemoPointOfSale() {
               />
             </fieldset>
             <fieldset
-              className="grid gap-5 min-[550px]:grid-cols-2"
+              className="grid gap-5 min-[550px]:grid-cols-2 items-baseline"
               form="request-demo_point-of-sale"
             >
               <TextInput
@@ -155,8 +157,18 @@ export function RequestDemoPointOfSale() {
 
             <Text component="p" fz={24} fw={500}>
               You can{" "}
-              <Text span c="#8300EB">
-                request demo
+              <Text
+                c="#8300EB"
+                component="button"
+                onClick={() => {
+                  modals.closeAll();
+                  modals.open({
+                    withCloseButton: false,
+                    children: <GetQuotePointOfSale />,
+                  });
+                }}
+              >
+                get quote
               </Text>
             </Text>
 

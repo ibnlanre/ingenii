@@ -83,7 +83,7 @@ export function GetInTouch() {
             />
           </fieldset>
           <fieldset
-            className="grid gap-5 min-[550px]:grid-cols-2 min-[850px]:grid-cols-3"
+            className="grid gap-5 min-[550px]:grid-cols-2 min-[850px]:grid-cols-3 items-baseline"
             form="get-in-touch"
           >
             <TextInput
@@ -100,7 +100,7 @@ export function GetInTouch() {
             />
           </fieldset>
           <fieldset
-            className="grid gap-5 min-[550px]:grid-cols-2 min-[850px]:grid-cols-3"
+            className="grid gap-5 min-[550px]:grid-cols-2 min-[850px]:grid-cols-3 items-baseline"
             form="get-in-touch"
           >
             <TextInput

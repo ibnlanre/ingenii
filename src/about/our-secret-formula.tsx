@@ -5,11 +5,11 @@ import Image from "next/image";
 export function OurSecretFormula() {
   const images = [
     {
-      url: "img1.jpeg",
+      url: "image-1.jpeg",
       rotate: 4,
     },
     {
-      url: "img4.jpeg",
+      url: "image-4.jpeg",
       rotate: -4,
     },
   ];

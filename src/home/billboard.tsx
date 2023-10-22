@@ -6,22 +6,22 @@ import { useEffect, useState } from "react";
 export function Billboard() {
   const [parent] = useAutoAnimate({ duration: 500 });
   // const [images, setImages] = useState([
-  //   "main-4",
-  //   "main-3",
-  //   "main-2",
-  //   "main-1",
+  //   "image-12",
+  //   "image-11",
+  //   "image-10",
+  //   "image-9",
   // ]);
 
   const images = [
     {
-      url: "img1.jpeg",
+      url: "image-1.jpeg",
       rotate: 0,
     },
     {
-      url: "img2.jpeg",
+      url: "image-2.jpeg",
       rotate: -6,
     },
-    { url: "main-1.png", rotate: -10 },
+    { url: "image-9.png", rotate: -10 },
   ];
 
   // useEffect(() => {

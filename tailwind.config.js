@@ -17,6 +17,7 @@ module.exports = {
         lotion: "#FAFAFA",
         "ghost-white": "#F9F8F9",
         begonia: "#FF7070",
+        "venetian-red": "#CC1512",
         violet: "#8300EB",
         "electric-violet": "#8F00FF",
         "pale-lavender": "#E4D3F1",

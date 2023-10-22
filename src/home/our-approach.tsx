@@ -34,7 +34,7 @@ export function OurApproach() {
                   <li className="relative flex flex-col flex-1 gap-3 p-6 w-[405px] max-w-[90vw] shadow-card">
                     <figure className="p-2 rounded-full bg-pale-lavender w-fit">
                       <Image
-                        src={`./sprites/${approach.name}.svg`}
+                        src={`/sprites/${approach.name}.svg`}
                         alt={approach.name}
                         height={24}
                         width={24}
