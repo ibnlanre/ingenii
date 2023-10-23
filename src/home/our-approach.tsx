@@ -1,14 +1,13 @@
-"use client";
-
 import { Fragment } from "react";
-import { motion, useDragControls } from "framer-motion";
 
+import Marquee from "../components/marquee";
 import APPROACH from "../data/approach.json";
 import Image from "next/image";
-import Marquee from "react-fast-marquee";
+
+// @ts-ignore
+// import Marquee from "react-drag-marquee";
 
 export function OurApproach() {
-  const controls = useDragControls();
 
   return (
     <section
@@ -25,40 +24,38 @@ export function OurApproach() {
         </p>
       </div>
 
-      <motion.div drag="x" dragControls={controls}>
-        <Marquee pauseOnHover>
-          <ul className="grid grid-flow-col gap-3 py-8 overflow-hidden auto-cols-auto">
-            {APPROACH.map((approach) => {
-              return (
-                <Fragment key={approach.name}>
-                  <li className="relative flex flex-col flex-1 gap-3 p-6 w-[405px] max-w-[90vw] shadow-card">
-                    <figure className="p-2 rounded-full bg-pale-lavender w-fit">
-                      <Image
-                        src={`/sprites/${approach.name}.svg`}
-                        alt={approach.name}
-                        height={24}
-                        width={24}
-                      />
-                    </figure>
-                    <h4 className="text-xl font-bold">{approach.character}</h4>
-                    <p className="text-lg text-philippine-gray">
-                      {approach.description}
-                    </p>
-                  </li>
-                  <svg
-                    width="51"
-                    height="25"
-                    viewBox="0 0 51 25"
-                    className="self-center text-violet"
-                  >
-                    <use xlinkHref="/vectors/arrow.svg#arrow" />
-                  </svg>
-                </Fragment>
-              );
-            })}
-          </ul>
-        </Marquee>
-      </motion.div>
+      <Marquee>
+        <ul className="grid grid-flow-col gap-3 py-8 overflow-hidden auto-cols-auto">
+          {APPROACH.map((approach) => {
+            return (
+              <Fragment key={approach.name}>
+                <li className="relative flex flex-col flex-1 gap-3 p-6 w-[405px] max-w-[90vw] shadow-card">
+                  <figure className="p-2 rounded-full bg-pale-lavender w-fit">
+                    <Image
+                      src={`/sprites/${approach.name}.svg`}
+                      alt={approach.name}
+                      height={24}
+                      width={24}
+                    />
+                  </figure>
+                  <h4 className="text-xl font-bold">{approach.character}</h4>
+                  <p className="text-lg text-philippine-gray">
+                    {approach.description}
+                  </p>
+                </li>
+                <svg
+                  width="51"
+                  height="25"
+                  viewBox="0 0 51 25"
+                  className="self-center text-violet"
+                >
+                  <use xlinkHref="/vectors/arrow.svg#arrow" />
+                </svg>
+              </Fragment>
+            );
+          })}
+        </ul>
+      </Marquee>
     </section>
   );
 }

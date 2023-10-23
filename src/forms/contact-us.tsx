@@ -1,5 +1,6 @@
 import {
   Button,
+  Checkbox,
   Select,
   Stack,
   Text,
@@ -14,6 +15,7 @@ import { useMemo } from "react";
 import { PhoneNumber } from "../components";
 import { REASONS } from "./options";
 
+import Link from "next/link";
 import clsx from "clsx";
 
 interface FormProps {
@@ -78,7 +80,7 @@ export function ContactUs() {
             }}
           >
             <fieldset
-              className="grid gap-5 min-[550px]:grid-cols-2"
+              className="grid gap-5 min-[550px]:grid-cols-2 min-[850px]:grid-cols-3 items-baseline"
               form="contact-us"
             >
               <Select
@@ -91,7 +93,7 @@ export function ContactUs() {
               />
             </fieldset>
             <fieldset
-              className="grid gap-5 min-[550px]:grid-cols-2 items-baseline"
+              className="grid gap-5 min-[550px]:grid-cols-2 min-[850px]:grid-cols-3 items-baseline"
               form="contact-us"
             >
               <TextInput
@@ -108,7 +110,7 @@ export function ContactUs() {
               />
             </fieldset>
             <fieldset
-              className="grid gap-5 min-[550px]:grid-cols-2 items-baseline"
+              className="grid gap-5 min-[550px]:grid-cols-2 min-[850px]:grid-cols-3 items-baseline"
               form="contact-us"
             >
               <TextInput
@@ -155,18 +157,42 @@ export function ContactUs() {
               />
 
               <Textarea
+                autosize
+                minRows={2}
+                maxRows={4}
+                className="col-span-2"
                 label="Message"
                 placeholder="I'd like to collaborate with Ingenii on a project or enterprise"
                 {...form.getInputProps("message")}
               />
             </fieldset>
-
-            <Text component="p" fz={24} fw={500}>
-              You can{" "}
-              <Text span c="#8300EB">
-                get quote
-              </Text>
-            </Text>
+            <Checkbox
+              w={685}
+              classNames={{
+                input: "checked:bg-violet checked:border-violet",
+              }}
+              label={
+                <span>
+                  I have read and accepted the{" "}
+                  <Link
+                    href="/terms-of-use"
+                    className="underline underline-offset-4"
+                  >
+                    Terms of Use
+                  </Link>
+                  . Please read our{" "}
+                  <Link
+                    href="/privacy-policy"
+                    className="underline underline-offset-4"
+                  >
+                    Privacy Policy
+                  </Link>{" "}
+                  to understand how we plan to use your personal{" "}
+                  <span className="whitespace-nowrap">information. *</span>
+                </span>
+              }
+              {...form.getInputProps("terms_and_conditions")}
+            />
 
             <Button
               h="auto"
@@ -178,7 +204,7 @@ export function ContactUs() {
                 label: "text-white",
               }}
             >
-              Get Quote
+              Submit
             </Button>
           </form>
         </Stack>

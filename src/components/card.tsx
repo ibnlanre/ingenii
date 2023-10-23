@@ -1,6 +1,7 @@
-import clsx from "clsx";
-import Image from "next/image";
 import { ComponentProps } from "react";
+
+import Image from "next/image";
+import clsx from "clsx";
 
 interface CardProps extends ComponentProps<"article"> {
   title: string;

@@ -81,12 +81,20 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               required: {
                 color: "#8300EB",
               },
+              label: {
+                fontWeight: "normal",
+                color: "#4C433C",
+              },
             },
           },
           InputWrapper: {
             styles: {
               required: {
                 color: "#8300EB",
+              },
+              label: {
+                fontWeight: "normal",
+                color: "#4C433C",
               },
             },
           },

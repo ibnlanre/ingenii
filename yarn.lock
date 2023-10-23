@@ -3172,6 +3172,11 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-drag-marquee@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/react-drag-marquee/-/react-drag-marquee-0.0.7.tgz#b7e8c6b576bc09dbd6929283f8c1a7eda4a1f183"
+  integrity sha512-JFpnjhUp4JSZUQbrYBV7/FkBYftF9c+/ra/qNGCMGwT0a7r+cHNRJf/FEPFra4jjSQEfBtGTeVN10otxvFFK+w==
+
 react-fast-marquee@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-fast-marquee/-/react-fast-marquee-1.6.1.tgz#38ee8a8725a98eac3e8a16da914b04b6f7d0e5cc"

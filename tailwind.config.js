@@ -19,6 +19,7 @@ module.exports = {
         begonia: "#FF7070",
         "venetian-red": "#CC1512",
         violet: "#8300EB",
+        lavender: "#F3E7FD",
         "electric-violet": "#8F00FF",
         "pale-lavender": "#E4D3F1",
         "chinese-black": "#111111",
@@ -26,6 +27,7 @@ module.exports = {
         gray: "#BBBBBB",
       },
       boxShadow: {
+        need: "12px 12px 24px 0px #F0F0F0",
         card: "14px 14px 30px 0px #F0F0F0",
       },
       maxWidth: {

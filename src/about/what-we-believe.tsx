@@ -24,7 +24,7 @@ export function WhatWeBelieve() {
         <h3 className="text-3xl font-bold clump:text-[clamp(1.5rem,3vw,1.875rem)] leading-normal">
           What we believe
         </h3>
-        <p className="text-2xl clump:text-[clamp(1.15rem,3vw,1.5rem)] text-philippine-gray leading-normal lighten">
+        <p className="text-2xl clump:text-[clamp(1.15rem,3vw,1.5rem)] leading-normal lighten">
           We believe in the power of business to shape a better future. Through
           sustainable growth, responsible practices, and unwavering dedication
           to excellence and integrity, we aim to make a positive impact that

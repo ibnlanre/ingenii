@@ -16,14 +16,14 @@ export function Landing() {
     >
       <div className="flex flex-col flex-1 gap-14 gap-y-[clamp(1.5rem,3vw,3.5rem)]">
         <article className="flex flex-col gap-10 gap-y-[clamp(1rem,2vw,2.5rem)] text-davys-grey">
-          <h3
+          <h2
             className={clsx(
               "clump:text-[clamp(1.5rem,4vw,2.25rem)] clump:leading-[clamp(2rem,3vw,2.5rem)]",
               "text-4xl font-bold text-violet"
             )}
           >
             Point-of-Sale System for Retail & Hospitality Businesses
-          </h3>
+          </h2>
           <p className="text-xl">
             Looking for new POS, a modern, integrated retail solution with tools
             to sell everywhere - all managed from one place.
