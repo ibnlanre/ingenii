@@ -2,11 +2,10 @@ import React, {
   ComponentProps,
   MouseEvent,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
-
-import M from "react-fast-marquee";
 
 interface MarqueeProps extends ComponentProps<"div"> {
   offset?: number;
@@ -14,21 +13,36 @@ interface MarqueeProps extends ComponentProps<"div"> {
 }
 
 function Marquee({ freq = 15, offset = 1, children }: MarqueeProps) {
+  const dragRoot = useRef<HTMLDivElement>(null);
   const dragSpan = useRef<HTMLDivElement>(null);
+
   const scrollTimer = useRef<NodeJS.Timeout>();
   const prePageX = useRef<number>(0);
   const currentPageX = useRef<number>(0);
 
   const [spanWidth, setSpanWidth] = useState(0);
-
   const [state, setState] = useState({
     left: 0,
     isDraging: false,
   });
 
+  const firstChild = useMemo(
+    () => dragSpan.current?.firstElementChild,
+    [dragSpan.current]
+  );
+  const lastChild = useMemo(
+    () => dragSpan.current?.lastElementChild,
+    [dragSpan.current]
+  );
+
   const handleDrag = (e: MouseEvent) => {
     prePageX.current = currentPageX.current;
     currentPageX.current = e.pageX;
+
+    console.dir(
+      firstChild?.getBoundingClientRect(),
+      lastChild?.getBoundingClientRect()
+    );
 
     const drag = currentPageX.current - prePageX.current;
     setState((prev) => {
@@ -60,7 +74,7 @@ function Marquee({ freq = 15, offset = 1, children }: MarqueeProps) {
   };
 
   const handMouseLeave = () => {
-    scrollTimer.current = setInterval(move, freq);
+    // scrollTimer.current = setInterval(move, freq);
     setState((prev) => {
       return { ...prev, isDraging: false };
     });
@@ -79,13 +93,15 @@ function Marquee({ freq = 15, offset = 1, children }: MarqueeProps) {
   const initMarquee = () => {
     if (!dragSpan.current) return;
 
-    const dragWidth = dragSpan.current.getBoundingClientRect().width;
-    setSpanWidth(Math.max(dragWidth, window.innerWidth));
+    const firstChild = dragSpan.current.firstElementChild;
+    const dragWidth = firstChild?.getBoundingClientRect().width ?? 0;
 
-    scrollTimer.current = setInterval(move, freq);
+    setSpanWidth(Math.max(dragWidth, window.innerWidth));
+    // scrollTimer.current = setInterval(move, freq);
   };
 
   useEffect(() => {
+    if (!dragSpan.current) return;
     initMarquee();
 
     return () => {
@@ -95,6 +111,7 @@ function Marquee({ freq = 15, offset = 1, children }: MarqueeProps) {
 
   return (
     <div
+      ref={dragRoot}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handMouseLeave}
       onMouseDown={handleMouseDown}
@@ -108,16 +125,16 @@ function Marquee({ freq = 15, offset = 1, children }: MarqueeProps) {
       }}
     >
       <div
-        style={{ left: state.left, position: "relative", userSelect: "none" }}
+        ref={dragSpan}
+        style={{
+          left: state.left,
+          position: "relative",
+          userSelect: "none",
+          display: "flex",
+          minWidth: "max-content",
+        }}
       >
-        <div
-          ref={dragSpan}
-          style={{
-            minWidth: "max-content",
-          }}
-        >
-          {children}
-        </div>
+        {Array.from({ length: 2 }, () => children)}
       </div>
     </div>
   );

@@ -1,14 +1,15 @@
 import { Fragment } from "react";
 
-import Marquee from "../components/marquee";
 import APPROACH from "../data/approach.json";
 import Image from "next/image";
 
+import Marquee from "react-fast-marquee";
+
 // @ts-ignore
 // import Marquee from "react-drag-marquee";
+// import Marquee from "../components/marquee";
 
 export function OurApproach() {
-
   return (
     <section
       id="our-approach"
@@ -24,7 +25,7 @@ export function OurApproach() {
         </p>
       </div>
 
-      <Marquee>
+      <Marquee pauseOnHover>
         <ul className="grid grid-flow-col gap-3 py-8 overflow-hidden auto-cols-auto">
           {APPROACH.map((approach) => {
             return (

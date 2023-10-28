@@ -74,7 +74,7 @@ export function Intro() {
                 <path
                   d="M20 6.5L9 17.5L4 12.5"
                   stroke="#8300EB"
-                  stroke-width="3"
+                  strokeWidth="3"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />

@@ -1,14 +1,15 @@
 import { countries } from "@aerapass/country-data";
-import { parsePhone } from "../utilities";
-
 import { Button, Checkbox, FileInput, Select, TextInput } from "@mantine/core";
-import { useForm } from "@mantine/form";
+import { useForm, yupResolver } from "@mantine/form";
 import { useMemo } from "react";
 import { CaretDownIcon } from "@radix-ui/react-icons";
+
+import { INDUSTRY, REVENUE } from "./options";
 import { PhoneNumber } from "../components";
 
+import toHtml from "json2htable";
 import Link from "next/link";
-import { INDUSTRY, REVENUE } from "./options";
+import * as yup from "yup";
 
 interface FormProps {
   title: string;
@@ -26,6 +27,23 @@ interface FormProps {
   terms_and_conditions: boolean;
 }
 
+const schema = yup.object().shape({
+  title: yup.string().optional(),
+  first_name: yup.string().required("Kindly provide your first name"),
+  last_name: yup.string().required("Kindly provide your last name"),
+  position: yup.string().optional(),
+  email: yup.string().email().required("Kindly provide your email address"),
+  country_code: yup.string().notRequired(),
+  phone_number: yup.string().optional(),
+  company_name: yup.string().required("Kindly provide your company name"),
+  industry: yup
+    .string()
+    .required()
+    .oneOf(INDUSTRY, "Kindly select an industry"),
+  revenue: yup.string().optional().oneOf(REVENUE),
+  term_and_conditions: yup.boolean().notRequired(),
+});
+
 export function GetInTouch() {
   const form = useForm<FormProps>({
     initialValues: {
@@ -39,17 +57,29 @@ export function GetInTouch() {
       company_name: "",
       company_location: "",
       industry: "",
-      revenue: "",
+      revenue: "Unknown / None",
       files: [],
       terms_and_conditions: false,
     },
+    validate: yupResolver(schema),
   });
 
   const countriesOptions = useMemo(() => {
     return countries.all.map((props) => props.name);
   }, []);
 
-  const handleSubmit = (values: FormProps) => {};
+  const handleSubmit = (values: FormProps) => {
+    const data = toHtml([values]);
+    window.Email.send({
+      Host: "smtp.elasticemail.com",
+      Username: "username",
+      Password: "password",
+      To: "them@website.com",
+      From: "you@isp.com",
+      Subject: "Get in Touch",
+      Body: data,
+    });
+  };
 
   return (
     <section
@@ -136,10 +166,11 @@ export function GetInTouch() {
               {...form.getInputProps("company_location")}
             />
             <Select
-              data={INDUSTRY}
+              withAsterisk
               label="Industry"
               placeholder="Retail"
               rightSection={<CaretDownIcon color="#B0B0B0" />}
+              data={INDUSTRY}
               {...form.getInputProps("industry")}
             />
             <Select

@@ -102,11 +102,11 @@ export function Commerce() {
             </Menu.Dropdown>
           </Menu>
 
-          <Link
+          {/* <Link
             href={{
               pathname: "/products/commerce",
             }}
-          >
+          > */}
             <button
               className={clsx(
                 "rounded-lg px-5 py-2.5 flex gap-0.5 items-center",
@@ -115,7 +115,7 @@ export function Commerce() {
             >
               Find More <ArrowRightIcon />
             </button>
-          </Link>
+          {/* </Link> */}
         </div>
       </div>
 
