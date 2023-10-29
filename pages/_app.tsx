@@ -3,8 +3,6 @@ import { ModalsProvider } from "@mantine/modals";
 import type { AppProps } from "next/app";
 
 import { FavIcon } from "../src/components";
-
-import Script from "next/script";
 import "../src/global.css";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -153,12 +151,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <ModalsProvider>
         <Component {...pageProps} />
       </ModalsProvider>
-
-      {/* SMTP.JS */}
-      <Script
-        src="https://smtpjs.com/v3/smtp.js"
-        strategy="beforeInteractive"
-      />
     </MantineProvider>
   );
 }

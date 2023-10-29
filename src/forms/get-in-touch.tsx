@@ -23,7 +23,7 @@ interface FormProps {
   company_location: string;
   industry: string;
   revenue: string;
-  files: [];
+  file: File | null;
   terms_and_conditions: boolean;
 }
 
@@ -58,7 +58,7 @@ export function GetInTouch() {
       company_location: "",
       industry: "",
       revenue: "Unknown / None",
-      files: [],
+      file: null,
       terms_and_conditions: false,
     },
     validate: yupResolver(schema),
@@ -69,15 +69,35 @@ export function GetInTouch() {
   }, []);
 
   const handleSubmit = (values: FormProps) => {
-    const data = toHtml([values]);
-    window.Email.send({
-      Host: "smtp.elasticemail.com",
-      Username: "username",
-      Password: "password",
-      To: "them@website.com",
-      From: "you@isp.com",
-      Subject: "Get in Touch",
-      Body: data,
+    const { file } = values;
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (data) {
+        if (data.target) {
+          const binaryFile = data.target.result;
+          
+          const payload = {
+            BinaryContent: binaryFile,
+            Name: file.name,
+            ContentType: file.type,
+          };
+
+          fetch("/api/upload", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+        }
+      };
+      reader.readAsBinaryString(file);
+    }
+
+    fetch("/api/email", {
+      method: "POST",
+      body: toHtml([values]),
     });
   };
 
@@ -181,10 +201,9 @@ export function GetInTouch() {
               {...form.getInputProps("revenue")}
             />
             <FileInput
-              multiple
               label="Upload File"
               placeholder="Proposals.pdf"
-              {...form.getInputProps("files")}
+              {...form.getInputProps("file")}
             />
           </fieldset>
           <Checkbox

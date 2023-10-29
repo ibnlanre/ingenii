@@ -4,7 +4,7 @@ export function Clients() {
   return (
     <section
       id="clients"
-      className="flex flex-col max-w-8xl gap-6 py-8 mx-auto place-items-center"
+      className="flex flex-col gap-6 py-8 mx-auto max-w-8xl place-items-center"
     >
       <h2 className="text-3xl font-bold text-center clump:text-[clamp(1.25rem,3vw,1.875rem)]">
         Clients we have worked with
@@ -43,6 +43,15 @@ export function Clients() {
             height={106}
             src="/clients/koneqtor.png"
             alt="Koneqtor logo"
+            className="object-contain h-full grayscale"
+          />
+        </figure>
+        <figure className="w-40 h-16 mx-auto">
+          <Image
+            width={361}
+            height={106}
+            src="/clients/megamart.png"
+            alt="Atlantic MegaMart logo"
             className="object-contain h-full grayscale"
           />
         </figure>
