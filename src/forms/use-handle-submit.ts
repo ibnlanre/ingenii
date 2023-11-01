@@ -1,9 +1,9 @@
 import { notifications } from "@mantine/notifications";
+import { UseFormReturnType } from "@mantine/form";
 import { useState } from "react";
 
 import { toHtml } from "../utilities";
 import axios from "axios";
-import { UseFormReturnType } from "@mantine/form";
 
 export function useHandleSubmit<
   Values extends Record<string, any>,

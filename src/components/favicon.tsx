@@ -38,7 +38,11 @@ export function FavIcon() {
         sizes="180x180"
         href="/favicon/apple-touch-icon.png"
       />
-      <link rel="manifest" href="/favicon/site.webmanifest.json" />
+      <link
+        rel="manifest"
+        crossOrigin="use-credentials"
+        href="/favicon/site.webmanifest"
+      />
     </Head>
   );
 }
