@@ -6,15 +6,18 @@ import {
   Text,
   TextInput,
 } from "@mantine/core";
-import { useForm } from "@mantine/form";
+import { useForm, yupResolver } from "@mantine/form";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { countries } from "@aerapass/country-data";
 import { modals } from "@mantine/modals";
 import { useMemo } from "react";
 
+import { useHandleSubmit } from "../use-handle-submit";
 import { PhoneNumber } from "../../components";
 import { INDUSTRY, REVENUE, SALE } from "../options";
 import { GetQuotePointOfSale } from "../get-quote";
+
+import * as yup from "yup";
 
 interface FormProps {
   industry: string;
@@ -29,6 +32,24 @@ interface FormProps {
   stores: string;
 }
 
+const schema = yup.object().shape({
+  industry: yup
+    .string()
+    .required()
+    .oneOf(INDUSTRY, "Kindly select an industry"),
+  sale: yup.string().required().oneOf(SALE, "Kindly select a type of sale"),
+  revenue: yup.string().optional().oneOf(REVENUE),
+  full_name: yup.string().required("Kindly provide your full name"),
+  email: yup.string().email().required("Kindly provide your email address"),
+  country_code: yup.string().notRequired(),
+  phone_number: yup.string().optional(),
+  company_name: yup.string().required("Kindly provide your company name"),
+  company_location: yup
+    .string()
+    .required("Kindly provide your company location"),
+  stores: yup.number().required("Kindly provide your store count"),
+});
+
 export function RequestDemoPointOfSale() {
   const form = useForm<FormProps>({
     initialValues: {
@@ -37,19 +58,21 @@ export function RequestDemoPointOfSale() {
       revenue: "",
       full_name: "",
       email: "",
-      country_code: "",
+      country_code: "+234",
       phone_number: "",
       company_name: "",
-      company_location: "",
+      company_location: "Nigeria",
       stores: "",
     },
+    validate: yupResolver(schema),
+    validateInputOnBlur: true,
   });
 
   const countriesOptions = useMemo(() => {
     return countries.all.map((props) => props.name);
   }, []);
 
-  const handleSubmit = (values: FormProps) => {};
+  const handle = useHandleSubmit<FormProps>(form);
 
   return (
     <div>
@@ -66,7 +89,7 @@ export function RequestDemoPointOfSale() {
           </Text>
 
           <form
-            onSubmit={form.onSubmit(handleSubmit)}
+            onSubmit={form.onSubmit(handle.submit)}
             className="flex flex-col gap-5 bg-white text-dark-puce max-w-[54rem]"
             id="request-demo_point-of-sale"
           >
@@ -75,6 +98,7 @@ export function RequestDemoPointOfSale() {
               form="request-demo_point-of-sale"
             >
               <Select
+                searchable
                 data={INDUSTRY}
                 withAsterisk
                 label="what is your industry"
@@ -83,6 +107,7 @@ export function RequestDemoPointOfSale() {
                 {...form.getInputProps("industry")}
               />
               <Select
+                searchable
                 data={SALE}
                 withAsterisk
                 label="What do you sell"
@@ -96,6 +121,7 @@ export function RequestDemoPointOfSale() {
               form="request-demo_point-of-sale"
             >
               <Select
+                searchable
                 data={REVENUE}
                 label="What's your annual revenue in USD"
                 placeholder="Less than $10k"
@@ -137,6 +163,7 @@ export function RequestDemoPointOfSale() {
               />
 
               <Select
+                searchable
                 withAsterisk
                 data={countriesOptions}
                 label="Company Location"
@@ -176,6 +203,8 @@ export function RequestDemoPointOfSale() {
               h="auto"
               w="max-content"
               type="submit"
+              disabled={handle.loading}
+              loading={handle.loading}
               classNames={{
                 root: "bg-chinese-black",
                 inner: "py-7 px-9",

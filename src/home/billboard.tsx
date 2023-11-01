@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import Image from "next/image";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { useEffect, useState } from "react";
+// import { useAutoAnimate } from "@formkit/auto-animate/react";
+// import { useEffect, useState } from "react";
 
 export function Billboard() {
-  const [parent] = useAutoAnimate({ duration: 500 });
+  // const [parent] = useAutoAnimate({ duration: 500 });
   // const [images, setImages] = useState([
   //   "image-12",
   //   "image-11",

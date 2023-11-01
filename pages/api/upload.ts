@@ -36,7 +36,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     url.searchParams.set(key, value.toString());
   });
 
-  fetch(url, {
+  return fetch(url, {
     body: req.body,
     method: "POST",
   })
@@ -49,15 +49,17 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       //     messageid: string;
       //   };
       // };
-      console.log(payload);
 
-      res.status(200).json({
+      return res.status(200).json({
         message: `Uploaded successfully`,
       });
     })
-    .catch((e) => {
-      console.error("Unable to upload file", e);
-      res.status(400).json({
+    .catch((error) => {
+      if (process.env.NODE_ENV === "development") {
+        console.error("Upload failed", error);
+      }
+
+      return res.status(400).json({
         message: "Unable to upload file",
       });
     });

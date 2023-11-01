@@ -5,7 +5,7 @@ import { useUncontrolled } from "@mantine/hooks";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { PhoneNumberPossibility } from "awesome-phonenumber";
 
-import { parsePhone } from "../utilities";
+import { parseNumber } from "../utilities";
 
 const callingCodes = Array.from(
   new Set(
@@ -48,7 +48,7 @@ export function PhoneNumber({
   const [number, handleNumber] = useUncontrolled({
     value: inputProps.value,
     onChange: (value: string) => {
-      const { possibility, phone, code } = parsePhone(value, selected);
+      const { possibility, phone, code } = parseNumber(value, selected);
       const possible = possibility as Possible;
 
       if (possible === "unknown") inputProps.onChange(value);
@@ -64,9 +64,10 @@ export function PhoneNumber({
       <Flex
         gap={4}
         align="center"
+        className="focus-within:!border-violet"
         style={{
+          overflow: "auto",
           paddingInlineStart: 4,
-          paddingInlineEnd: "calc(2.25rem  / 3)",
           border: "1px solid #D8D2CE",
           borderRadius: 10,
         }}
@@ -106,6 +107,9 @@ export function PhoneNumber({
           onChange={(e) => handleNumber(e.target.value)}
           value={number}
           styles={{
+            root: {
+              width: "100%",
+            },
             input: {
               border: "none",
               borderInlineStart: "1px solid #D8D2CE",

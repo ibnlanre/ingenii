@@ -6,15 +6,18 @@ import {
   Text,
   TextInput,
 } from "@mantine/core";
-import { useForm } from "@mantine/form";
+import { useForm, yupResolver } from "@mantine/form";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { countries } from "@aerapass/country-data";
 import { modals } from "@mantine/modals";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
+import { useHandleSubmit } from "../use-handle-submit";
 import { PhoneNumber } from "../../components";
-import { REVENUE, SALE } from "../options";
 import { GetQuoteAugmentedReality } from "../get-quote";
+import { REVENUE, SALE } from "../options";
+
+import * as yup from "yup";
 
 interface FormProps {
   sale: string;
@@ -28,6 +31,20 @@ interface FormProps {
   stores: string;
 }
 
+const schema = yup.object().shape({
+  sale: yup.string().required().oneOf(SALE, "Kindly select a type of sale"),
+  revenue: yup.string().optional().oneOf(REVENUE),
+  full_name: yup.string().required("Kindly provide your full name"),
+  email: yup.string().email().required("Kindly provide your email address"),
+  country_code: yup.string().notRequired(),
+  phone_number: yup.string().optional(),
+  company_name: yup.string().required("Kindly provide your company name"),
+  company_location: yup
+    .string()
+    .required("Kindly provide your company location"),
+  stores: yup.number().required("Kindly provide your store count"),
+});
+
 export function RequestDemoAugmentedReality() {
   const form = useForm<FormProps>({
     initialValues: {
@@ -35,19 +52,21 @@ export function RequestDemoAugmentedReality() {
       revenue: "",
       full_name: "",
       email: "",
-      country_code: "",
+      country_code: "+234",
       phone_number: "",
       company_name: "",
-      company_location: "",
+      company_location: "Nigeria",
       stores: "",
     },
+    validate: yupResolver(schema),
+    validateInputOnBlur: true,
   });
 
   const countriesOptions = useMemo(() => {
     return countries.all.map((props) => props.name);
   }, []);
 
-  const handleSubmit = (values: FormProps) => {};
+  const handle = useHandleSubmit<FormProps>(form);
 
   return (
     <div>
@@ -65,7 +84,7 @@ export function RequestDemoAugmentedReality() {
           </Text>
 
           <form
-            onSubmit={form.onSubmit(handleSubmit)}
+            onSubmit={form.onSubmit(handle.submit)}
             className="flex flex-col gap-5 bg-white text-dark-puce max-w-[54rem]"
             id="request-demo_augmented-reality"
           >
@@ -74,6 +93,7 @@ export function RequestDemoAugmentedReality() {
               form="request-demo_augmented-reality"
             >
               <Select
+                searchable
                 data={SALE}
                 withAsterisk
                 label="What do you sell"
@@ -87,6 +107,7 @@ export function RequestDemoAugmentedReality() {
               form="request-demo_augmented-reality"
             >
               <Select
+                searchable
                 data={REVENUE}
                 label="What's your annual revenue in USD"
                 placeholder="Less than $10k"
@@ -128,6 +149,7 @@ export function RequestDemoAugmentedReality() {
               />
 
               <Select
+                searchable
                 withAsterisk
                 data={countriesOptions}
                 label="Company Location"
@@ -167,6 +189,8 @@ export function RequestDemoAugmentedReality() {
               h="auto"
               w="max-content"
               type="submit"
+              disabled={handle.loading}
+              loading={handle.loading}
               classNames={{
                 root: "bg-chinese-black",
                 inner: "py-7 px-9",

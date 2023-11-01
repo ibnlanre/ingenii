@@ -112,17 +112,19 @@ type SendEmail = {
   );
 
 const apikey = process.env.ELASTIC_EMAIL_API_KEY ?? "";
+const sender = process.env.ELASTIC_EMAIL_DEFAULT_SENDER ?? "";
 const recipient = process.env.ELASTIC_EMAIL_USERNAME ?? "";
 const base = process.env.ELASTIC_EMAIL_BASE_URL ?? "";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const bodyHtml = JSON.parse(req.body);
   const emailData = {
-    from: recipient,
+    from: sender,
     fromName: "Ingenii HQ",
     subject: "Get In Touch",
     isTransactional: true,
-    bodyHtml: req.body,
     to: recipient,
+    bodyHtml,
     apikey,
   } satisfies SendEmail;
 
@@ -131,7 +133,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     url.searchParams.set(key, value);
   });
 
-  fetch(url)
+  return fetch(url)
     .then(async (response: Response) => {
       const payload = (await response.json()) as {
         success: true;
@@ -141,13 +143,17 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         };
       };
 
-      res.status(200).json({
+      return res.status(200).json({
         message: `Email sent successfully with transaction id: ${payload.data.transactionid}`,
       });
     })
-    .catch(() => {
-      res.status(400).json({
-        message: "Unable to send email",
+    .catch((error: Response) => {
+      if (process.env.NODE_ENV === "development") {
+        console.error("Sending failed", error);
+      }
+
+      return res.status(400).json({
+        message: `Unable to send email`,
       });
     });
 }

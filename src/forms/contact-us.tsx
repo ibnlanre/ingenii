@@ -7,7 +7,7 @@ import {
   TextInput,
   Textarea,
 } from "@mantine/core";
-import { useForm } from "@mantine/form";
+import { useForm, yupResolver } from "@mantine/form";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { countries } from "@aerapass/country-data";
 import { useMemo } from "react";
@@ -18,6 +18,8 @@ import { REASONS } from "./options";
 import Link from "next/link";
 import clsx from "clsx";
 
+import * as yup from "yup";
+import { useHandleSubmit } from "./use-handle-submit";
 interface FormProps {
   reason: string;
   first_name: string;
@@ -32,6 +34,21 @@ interface FormProps {
   message: string;
 }
 
+const schema = yup.object().shape({
+  reason: yup.string().required("Kindly state a reason"),
+  first_name: yup.string().required("Kindly provide your first name"),
+  last_name: yup.string().required("Kindly provide your last name"),
+  email: yup.string().email().required("Kindly provide your email address"),
+  company: yup.string().required("Kindly provide your company name"),
+  position: yup.string().optional(),
+  country_code: yup.string().notRequired(),
+  phone_number: yup.string().optional(),
+  zip_code: yup.string().optional(),
+  location: yup.string().required("Kindly provide your location"),
+  message: yup.string().required("Kindly input your message"),
+  terms_and_conditions: yup.boolean().notRequired(),
+});
+
 export function ContactUs() {
   const form = useForm<FormProps>({
     initialValues: {
@@ -41,19 +58,21 @@ export function ContactUs() {
       email: "",
       company: "",
       position: "",
-      country_code: "",
+      country_code: "+234",
       phone_number: "",
       zip_code: "",
-      location: "",
+      location: "Nigeria",
       message: "",
     },
+    validate: yupResolver(schema),
+    validateInputOnBlur: true,
   });
 
   const countriesOptions = useMemo(() => {
     return countries.all.map((props) => props.name);
   }, []);
 
-  const handleSubmit = (values: FormProps) => {};
+  const handle = useHandleSubmit<FormProps>(form);
 
   return (
     <div>
@@ -72,7 +91,7 @@ export function ContactUs() {
           </Text>
 
           <form
-            onSubmit={form.onSubmit(handleSubmit)}
+            onSubmit={form.onSubmit(handle.submit)}
             className="flex flex-col gap-5 text-dark-puce max-w-[54rem] bg-white p-5"
             id="contact-us"
             style={{
@@ -84,6 +103,7 @@ export function ContactUs() {
               form="contact-us"
             >
               <Select
+                searchable
                 data={REASONS}
                 withAsterisk
                 label="Reason for contacting igenii"
@@ -148,6 +168,7 @@ export function ContactUs() {
               />
 
               <Select
+                searchable
                 withAsterisk
                 data={countriesOptions}
                 label="Location"
@@ -191,13 +212,17 @@ export function ContactUs() {
                   <span className="whitespace-nowrap">information. *</span>
                 </span>
               }
-              {...form.getInputProps("terms_and_conditions")}
+              {...form.getInputProps("terms_and_conditions", {
+                type: "checkbox",
+              })}
             />
 
             <Button
               h="auto"
               w="max-content"
               type="submit"
+              disabled={handle.loading}
+              loading={handle.loading}
               classNames={{
                 root: "bg-chinese-black",
                 inner: "py-7 px-9",

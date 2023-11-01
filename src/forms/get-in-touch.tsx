@@ -1,14 +1,15 @@
 import { countries } from "@aerapass/country-data";
 import { Button, Checkbox, FileInput, Select, TextInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
-import { useMemo } from "react";
 import { CaretDownIcon } from "@radix-ui/react-icons";
+import { useMemo } from "react";
 
-import { INDUSTRY, REVENUE } from "./options";
+import { useHandleSubmit } from "./use-handle-submit";
 import { PhoneNumber } from "../components";
+import { INDUSTRY, REVENUE } from "./options";
 
-import toHtml from "json2htable";
 import Link from "next/link";
+
 import * as yup from "yup";
 
 interface FormProps {
@@ -36,12 +37,15 @@ const schema = yup.object().shape({
   country_code: yup.string().notRequired(),
   phone_number: yup.string().optional(),
   company_name: yup.string().required("Kindly provide your company name"),
+  company_location: yup
+    .string()
+    .required("Kindly provide your company location"),
   industry: yup
     .string()
     .required()
     .oneOf(INDUSTRY, "Kindly select an industry"),
   revenue: yup.string().optional().oneOf(REVENUE),
-  term_and_conditions: yup.boolean().notRequired(),
+  terms_and_conditions: yup.boolean().notRequired(),
 });
 
 export function GetInTouch() {
@@ -52,54 +56,24 @@ export function GetInTouch() {
       last_name: "",
       position: "",
       email: "",
-      country_code: "",
+      country_code: "+234",
       phone_number: "",
       company_name: "",
-      company_location: "",
+      company_location: "Nigeria",
       industry: "",
       revenue: "Unknown / None",
       file: null,
       terms_and_conditions: false,
     },
     validate: yupResolver(schema),
+    validateInputOnBlur: true,
   });
 
   const countriesOptions = useMemo(() => {
     return countries.all.map((props) => props.name);
   }, []);
 
-  const handleSubmit = (values: FormProps) => {
-    const { file } = values;
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (data) {
-        if (data.target) {
-          const binaryFile = data.target.result;
-          
-          const payload = {
-            BinaryContent: binaryFile,
-            Name: file.name,
-            ContentType: file.type,
-          };
-
-          fetch("/api/upload", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-          });
-        }
-      };
-      reader.readAsBinaryString(file);
-    }
-
-    fetch("/api/email", {
-      method: "POST",
-      body: toHtml([values]),
-    });
-  };
+  const handle = useHandleSubmit<FormProps>(form);
 
   return (
     <section
@@ -118,7 +92,7 @@ export function GetInTouch() {
           </p>
         </header>
         <form
-          onSubmit={form.onSubmit(handleSubmit)}
+          onSubmit={form.onSubmit(handle.submit)}
           className="flex flex-col gap-5 p-5 bg-white text-dark-puce max-w-[54rem]"
           id="get-in-touch"
         >
@@ -178,6 +152,7 @@ export function GetInTouch() {
               {...form.getInputProps("company_name")}
             />
             <Select
+              searchable
               withAsterisk
               data={countriesOptions}
               label="Company Location"
@@ -186,6 +161,7 @@ export function GetInTouch() {
               {...form.getInputProps("company_location")}
             />
             <Select
+              searchable
               withAsterisk
               label="Industry"
               placeholder="Retail"
@@ -194,6 +170,7 @@ export function GetInTouch() {
               {...form.getInputProps("industry")}
             />
             <Select
+              searchable
               data={REVENUE}
               label="Yearly Revenue"
               placeholder="Less than $10k"
@@ -230,14 +207,17 @@ export function GetInTouch() {
                 <span className="whitespace-nowrap">information. *</span>
               </span>
             }
-            {...form.getInputProps("terms_and_conditions")}
+            {...form.getInputProps("terms_and_conditions", {
+              type: "checkbox",
+            })}
           />
 
           <Button
             h="auto"
             w="max-content"
             type="submit"
-            disabled={!form.values.terms_and_conditions}
+            disabled={!form.values.terms_and_conditions || handle.loading}
+            loading={handle.loading}
             classNames={{
               root: "bg-chinese-black",
               inner: "py-7 px-9",

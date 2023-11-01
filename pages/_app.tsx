@@ -1,5 +1,6 @@
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
+import { Notifications } from "@mantine/notifications";
 import type { AppProps } from "next/app";
 
 import { FavIcon } from "../src/components";
@@ -86,6 +87,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 "&:hover": {
                   backgroundColor: "#8F00FF",
                 },
+                "&[data-disabled]": {
+                  backgroundColor: "#FF7070",
+                  cursor: "not-allowed",
+                  pointerEvents: "auto"
+                },
               },
             },
           },
@@ -148,6 +154,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       }}
     >
       <FavIcon />
+      <Notifications />
       <ModalsProvider>
         <Component {...pageProps} />
       </ModalsProvider>
