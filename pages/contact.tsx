@@ -5,7 +5,7 @@ import { ContactUs } from "../src/forms";
 export default function Contact() {
   return (
     <main>
-      <Header />
+      <Header title="Contact" />
       <section
         className={clsx(
           "py-14 px-2 mx-auto clump:px-[clamp(8px,5vw,5rem)]",

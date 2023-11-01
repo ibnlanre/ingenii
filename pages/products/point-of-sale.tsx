@@ -4,7 +4,7 @@ import { Footer, Header } from "../../src/components";
 export default function PointOfSale() {
   return (
     <main>
-      <Header />
+      <Header title="Products | Point of Sale" />
       <Landing />
       <MultiChannel />
       <Details />

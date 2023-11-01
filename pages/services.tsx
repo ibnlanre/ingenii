@@ -9,7 +9,7 @@ import DESKTOP_SERVICES from "../src/data/services/desktop.json";
 export default function ServicesPage() {
   return (
     <main>
-      <Header />
+      <Header title="Services" />
       <Services>
         <Flex wrap="wrap" gap={48}>
           {DESKTOP_SERVICES.map(({ service, name, description }) => {

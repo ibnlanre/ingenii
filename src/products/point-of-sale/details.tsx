@@ -33,6 +33,7 @@ function KnowYourBest() {
           className="!relative object-cover [grid-area:1/1] -rotate-[4deg] rounded-[0.875rem]"
           src="/images/image-15.png"
           alt="point of sale"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           fill
         />
       </figure>

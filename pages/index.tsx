@@ -13,7 +13,7 @@ import {
 export default function Page() {
   return (
     <main>
-      <Header />
+      <Header title="Home" />
       <Billboard />
       <Clients />
       <Services>

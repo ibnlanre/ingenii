@@ -18,6 +18,7 @@ export function Comment(props: CommentProps) {
             className="object-contain"
             alt={`${props.company} logo`}
             src={props.logo}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             fill
           />
         </figure>

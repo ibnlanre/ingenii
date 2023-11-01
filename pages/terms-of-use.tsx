@@ -5,7 +5,7 @@ import { Footer, Header, Subtext } from "../src/components";
 export default function TermsOfUse() {
   return (
     <main>
-      <Header />
+      <Header title="Terms of Use" />
 
       <div className="py-14 px-2 relative clump:px-[clamp(8px,5vw,5rem)] max-w-8xl mx-auto gap-16 flex flex-col">
         <Stack spacing={48}>

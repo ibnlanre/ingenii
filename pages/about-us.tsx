@@ -10,7 +10,7 @@ import { Footer, Header } from "../src/components";
 export default function AboutUs() {
   return (
     <main>
-      <Header />
+      <Header title="About Us" />
       <Landing />
       <OurEffect />
       <WhatWeBelieve />

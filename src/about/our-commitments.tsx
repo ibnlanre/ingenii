@@ -41,6 +41,7 @@ export function OurCommitments() {
               )}
               src={`/images/${url}`}
               alt="our-effect"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               fill
             />
           ))}

@@ -4,6 +4,7 @@ import { Burger } from "./icons";
 
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 
 const NAVIGATION = [
   { name: "Home", to: "/" },
@@ -16,7 +17,12 @@ const NAVIGATION = [
   { name: "Contact", to: "/contact" },
 ];
 
-export function Header() {
+interface HeaderProps {
+  title: string;
+}
+
+export function Header({ title = "" }: HeaderProps) {
+  const heading = `Ingenii | ${title}`;
   const [drawerProps, setDrawerProps] = useState<{
     isOpened: boolean;
     component: ReactNode;
@@ -27,12 +33,16 @@ export function Header() {
 
   return (
     <>
+      <Head>
+        <title>{heading}</title>
+      </Head>
       <nav className="flex justify-between py-7 px-2 clump:px-[clamp(8px,5vw,5rem)] max-w-8xl mx-auto">
         <Link className="flex-grow" href="/">
           <Image
             className="!relative max-w-[100px]"
             src="/ingenii.png"
             alt="Ingenii Logo"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             fill
           />
         </Link>

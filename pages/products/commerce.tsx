@@ -4,7 +4,7 @@ import { Intro, Potential, Why } from "../../src/products";
 export default function PointOfSale() {
   return (
     <main>
-      <Header />
+      <Header title="Products | Commerce" />
       <Intro />
       {/* <Potential /> */}
       <Why />
